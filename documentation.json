@@ -1,0 +1,461 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "CardComponent",
+            "id": "component-CardComponent-71d81e0f791c608c3107597e3a6a6049",
+            "file": "projects/clio-system/src/lib/card/card.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cs-card",
+            "styleUrls": [
+                "./card.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./card.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n\n@Component({\n  selector: 'cs-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.sass']\n})\nexport class CardComponent  {}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".cs-card\n    font-family: 'Inter', sans-serif\n    padding: 10px\n    border-radius: 5px\n    border-width: thin\n    display: block\n    max-width: 100%\n    outline: none\n    text-decoration: none\n    transition-property: box-shadow, opacity\n    overflow-wrap: break-word\n    position: relative\n    white-space: normal\n    background-color: #FFFFFF\n\n\n    &-shadow\n        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12) !important\n",
+                    "styleUrl": "./card.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"cs-card cs-card-shadow\">\n    <ng-content>\n    </ng-content>\n</div>"
+        },
+        {
+            "name": "SwitchComponent",
+            "id": "component-SwitchComponent-af9c117c15ba00cdd16bbf314eb47893",
+            "file": "projects/clio-system/src/lib/switch/switch.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cs-switch",
+            "styleUrls": [
+                "./switch.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./switch.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "model",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "modelChange",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "handleChangeModel",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n\n@Component({\n  selector: 'cs-switch',\n  templateUrl: './switch.component.html',\n  styleUrls: ['./switch.component.sass']\n})\nexport class SwitchComponent {\n\n  @Input() model = false;\n  @Output() modelChange = new EventEmitter<boolean>();\n\n  handleChangeModel = () => this.modelChange.emit(!this.model);\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../assets/styles/sass/colors\"\n\n.cs-switch\n    position: relative\n    display: inline-block\n    width: 64px\n    height: 32px\n\n    & input\n        opacity: 0\n        width: 0\n        height: 0\n\n.cs-slider\n    position: absolute\n    cursor: pointer\n    top: 0\n    left: 0\n    right: 0\n    bottom: 0\n    border: 1px solid $mediumGray\n    background-color: $white\n    -webkit-transition: .4s\n    transition: .4s\n\n\n    &:before\n        position: absolute\n        content: \"\"\n        height: 24px\n        width: 24px\n        left: 4px\n        bottom: 3px\n        background-color: $mediumGray\n        -webkit-transition: .4s\n        transition: .4s\n\n\n    input:checked + &\n        background-color: $mainBlue\n        border: 1px solid $mainBlue\n\n\n    input:checked + &:before\n        -webkit-transform: translateX(26px)\n        -ms-transform: translateX(26px)\n        transform: translateX(26px)\n        background-color: $white\n        left: 8px\n\n    &.cs-round\n        border-radius: 34px\n\n\n    &.cs-round:before\n        border-radius: 50%\n",
+                    "styleUrl": "./switch.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<label class=\"cs-switch\">\n    <input type=\"checkbox\" [checked]=\"model\" (change)=\"handleChangeModel()\">\n    <span class=\"cs-slider cs-round\"></span>\n</label>"
+        }
+    ],
+    "modules": [
+        {
+            "name": "CardModule",
+            "id": "module-CardModule-5d098fdebfdd521885619c311522270c",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/card/card.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from './card.component';\n\n@NgModule({\n  declarations: [\n    CardComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    CardComponent\n  ]\n})\n\nexport class CardModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "CardComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "CardComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "CSSwitchModule",
+            "id": "module-CSSwitchModule-ac3c236df952f2ef884976a9ec21f764",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/switch/switch.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { SwitchComponent } from './switch.component';\n\n\n@NgModule({\n  declarations: [SwitchComponent],\n  imports: [CommonModule],\n  exports: [SwitchComponent]\n})\nexport class CSSwitchModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SwitchComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SwitchComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "lorem",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`\nLorem Ipsum is simply dummy text of the printing and typesetting industry. \nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, \nwhen an unknown printer took a galley of type and scrambled it to make a type specimen book. \nIt has survived not only five centuries, but also the leap into electronic typesetting,\nremaining essentially unchanged. It was popularised in the 1960s with the release of \nLetraset sheets containing Lorem Ipsum passages, and more recently with desktop \npublishing software like Aldus PageMaker including versions of Lorem Ipsum.\n`"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<CardComponent>",
+                "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<SwitchComponent>",
+                "defaultValue": "(args: SwitchComponent) => ({\n    props: args,\n})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/clio-system/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "projects/clio-system/src/lib/card/card.stories.ts": [
+                {
+                    "name": "lorem",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`\nLorem Ipsum is simply dummy text of the printing and typesetting industry. \nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, \nwhen an unknown printer took a galley of type and scrambled it to make a type specimen book. \nIt has survived not only five centuries, but also the leap into electronic typesetting,\nremaining essentially unchanged. It was popularised in the 1960s with the release of \nLetraset sheets containing Lorem Ipsum passages, and more recently with desktop \npublishing software like Aldus PageMaker including versions of Lorem Ipsum.\n`"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<CardComponent>",
+                    "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
+                }
+            ],
+            "projects/clio-system/src/lib/switch/switch.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<SwitchComponent>",
+                    "defaultValue": "(args: SwitchComponent) => ({\n    props: args,\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/clio-system/src/lib/card/card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/card/card.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "lorem",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/card/card.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/card/card.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/switch/switch.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SwitchComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

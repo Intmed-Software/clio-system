@@ -1,0 +1,43 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "clio-system": {
+      "projectType": "library",
+      "root": "projects/clio-system",
+      "sourceRoot": "projects/clio-system/src",
+      "prefix": "cs",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/clio-system/ng-package.json",
+            "tsConfig": "projects/clio-system/tsconfig.lib.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/clio-system/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/clio-system/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/clio-system/src/test.ts",
+            "tsConfig": "projects/clio-system/tsconfig.spec.json",
+            "karmaConfig": "projects/clio-system/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "clio-system"
+}
