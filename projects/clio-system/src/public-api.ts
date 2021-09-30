@@ -5,3 +5,7 @@ export * from './lib/switch/switch.module';
 /* CARD */
 export * from './lib/card/card.component';
 export * from './lib/card/card.module';
+
+/* ICONS */
+export * from './lib/icon/icon.component';
+export * from './lib/icon/icon.module';

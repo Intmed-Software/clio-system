@@ -11,7 +11,7 @@ export default {
 
 
 const Template: Story<CardComponent> = (args: CardComponent) => ({
-    template: `{{ cardValue }}`,
+    template: `{{ cardContent }}`,
     props: args,
 });
 
@@ -27,5 +27,5 @@ Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
 publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 `;
 Primary.args = {
-    cardValue: lorem,
+    cardContent: lorem,
 };

@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "CardComponent",
-            "id": "component-CardComponent-71d81e0f791c608c3107597e3a6a6049",
+            "id": "component-CardComponent-e6064bb9e3aa4441076ef57e6aa62452",
             "file": "projects/clio-system/src/lib/card/card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -36,16 +36,56 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n\n@Component({\n  selector: 'cs-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.sass']\n})\nexport class CardComponent  {}",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'cs-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.sass']\n})\nexport class CardComponent  {}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".cs-card\n    font-family: 'Inter', sans-serif\n    padding: 10px\n    border-radius: 5px\n    border-width: thin\n    display: block\n    max-width: 100%\n    outline: none\n    text-decoration: none\n    transition-property: box-shadow, opacity\n    overflow-wrap: break-word\n    position: relative\n    white-space: normal\n    background-color: #FFFFFF\n\n\n    &-shadow\n        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12) !important\n",
+                    "data": "@import '~material-design-icons/iconfont/material-icons.css'\n\n.cs-card\n    font-family: 'Inter', sans-serif\n    padding: 10px\n    border-radius: 5px\n    border-width: thin\n    display: block\n    max-width: 100%\n    outline: none\n    text-decoration: none\n    transition-property: box-shadow, opacity\n    overflow-wrap: break-word\n    position: relative\n    white-space: normal\n    background-color: #FFFFFF\n\n    &-shadow\n        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12) !important",
                     "styleUrl": "./card.component.sass"
                 }
             ],
             "stylesData": "",
             "templateData": "<div class=\"cs-card cs-card-shadow\">\n    <ng-content>\n    </ng-content>\n</div>"
+        },
+        {
+            "name": "IconComponent",
+            "id": "component-IconComponent-5125b8ff4c2becb99ea38f7428ea3d0d",
+            "file": "projects/clio-system/src/lib/icon/icon.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cs-icon",
+            "styleUrls": [
+                "./icon.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./icon.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'cs-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.sass']\n})\nexport class IconComponent{}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import '~material-design-icons/iconfont/material-icons.css'\n",
+                    "styleUrl": "./icon.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<i class=\"material-icons\">\n    <ng-content>\n    </ng-content>\n</i>"
         },
         {
             "name": "SwitchComponent",
@@ -120,13 +160,13 @@
     "modules": [
         {
             "name": "CardModule",
-            "id": "module-CardModule-5d098fdebfdd521885619c311522270c",
+            "id": "module-CardModule-c9c7170023b919fde58617e7f2b64c4a",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/clio-system/src/lib/card/card.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from './card.component';\n\n@NgModule({\n  declarations: [\n    CardComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n    CardComponent\n  ]\n})\n\nexport class CardModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from './card.component';\n@NgModule({\n  declarations: [\n    CardComponent\n  ],\n  imports: [\n    CommonModule,\n  ],\n  exports: [\n    CardComponent\n  ]\n})\n\nexport class CardModule {}",
             "children": [
                 {
                     "type": "providers",
@@ -205,6 +245,50 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "IconModule",
+            "id": "module-IconModule-5d2c3f5521350a6eeb80d38e3072fcae",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/icon/icon.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { IconComponent } from './icon.component';\n\n\n@NgModule({\n  declarations: [\n    IconComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [IconComponent]\n})\nexport class IconModule { }",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "IconComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "IconComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
@@ -243,6 +327,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/clio-system/src/lib/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -267,6 +361,16 @@
                 "deprecationMessage": "",
                 "type": "Story<CardComponent>",
                 "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<IconComponent>",
+                "defaultValue": "(args: IconComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
             },
             {
                 "name": "Template",
@@ -336,6 +440,28 @@
                     "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
                 }
             ],
+            "projects/clio-system/src/lib/icon/icon.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<IconComponent>",
+                    "defaultValue": "(args: IconComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
+                }
+            ],
             "projects/clio-system/src/lib/switch/switch.stories.ts": [
                 {
                     "name": "Primary",
@@ -399,6 +525,35 @@
             },
             {
                 "filePath": "projects/clio-system/src/lib/card/card.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/icon/icon.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "IconComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/icon/icon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/icon/icon.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
