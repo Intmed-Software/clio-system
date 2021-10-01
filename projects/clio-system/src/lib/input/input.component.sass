@@ -1,0 +1,43 @@
+@import "../../assets/styles/sass/colors"
+@import '~material-design-icons/iconfont/material-icons.css'
+
+
+.cs-input-container
+    font-family: 'Inter', sans-serif
+    display: flex
+    text-align: center
+    align-items: center
+    position: relative
+
+i
+    position: absolute
+    z-index: 2
+    display: block
+    margin-right: 16px
+    text-align: center
+    color: $mediumGray
+    cursor: pointer
+    right: 0
+
+input
+    width: 100%
+    padding: 8px
+    box-sizing: border-box
+    outline: none
+    color: $black
+    border: 1px solid $mediumGray
+    border-radius: 4px
+    font-size: 12px
+
+    &:focus
+        border: 1px solid $mainBlue
+
+    &:focus + .fa
+        color: $mainBlue
+
+    &::placeholder
+        color: $mediumGray
+
+   
+   
+    

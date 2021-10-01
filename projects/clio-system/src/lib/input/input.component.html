@@ -1,0 +1,7 @@
+<div class="cs-input-container">
+    <input [type]="passwordMode && passwordHidden ? 'password':'text'" [placeholder]="placeholder" [name]="name"
+        [(ngModel)]="model" (keydown)="handleChangeModel($event)">
+    <i class="material-icons" *ngIf="showSearchIcon"> search </i>
+    <i class="material-icons" *ngIf="showClearIcon" (click)="clearModel()"> close </i>
+    <i class="material-icons" *ngIf="passwordMode" (click)="onHandlechangeHiddenPassword()"> {{showPasswordIcon}} </i>
+</div>

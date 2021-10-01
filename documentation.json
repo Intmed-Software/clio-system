@@ -1,6 +1,334 @@
 {
-    "pipes": [],
-    "interfaces": [],
+    "pipes": [
+        {
+            "name": "FilterPipe",
+            "id": "pipe-FilterPipe-e763d66a0abe1aa97978888490c74d5f",
+            "file": "projects/clio-system/src/lib/tables/pipes/filter.pipe.ts",
+            "type": "pipe",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "lista",
+                            "type": "Array<any>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "termo",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        },
+                        {
+                            "name": "campos",
+                            "type": "string[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 9,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "lista",
+                            "type": "Array<any>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "termo",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "campos",
+                            "type": "string[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "verificacao",
+                    "args": [
+                        {
+                            "name": "val",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "termo",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "val",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "termo",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "filter",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\n\n\n@Pipe({\n  name: 'filter'\n})\nexport class FilterPipe implements PipeTransform {\n  \n  transform(lista: Array<any>, termo?: string, campos?: string[]): any {\n    if (!termo)\n      return lista;\n\n    if (campos)\n      return lista.filter(\n        item => {\n          for (const field of campos) {\n            if (this.verificacao(item[field], termo))\n              return true;\n          }\n          return;\n        }\n      );\n\n    return lista.filter(\n      item =>\n        Object.keys(item).some(\n          atributo => this.verificacao(\n            item[atributo],\n            termo\n          )\n        )\n    );\n  }\n\n  verificacao(val: string, termo: string) {\n    return !val ? false : val\n      .toString()\n      .toLowerCase()\n      .includes(termo.toLowerCase());\n  }\n}\n"
+        },
+        {
+            "name": "PaginationPipe",
+            "id": "pipe-PaginationPipe-69c80aed10e81094e839abe0c2143513",
+            "file": "projects/clio-system/src/lib/tables/pipes/paginations.pipe.ts",
+            "type": "pipe",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "lista",
+                            "type": "any[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "itemsPerPage",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "currentPage",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "lista",
+                            "type": "any[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "itemsPerPage",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "currentPage",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "pure": false,
+            "ngname": "pagination",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\n\n@Pipe({\n  name: 'pagination',\n  pure: false\n\n})\nexport class PaginationPipe implements PipeTransform {\n\n  transform(lista: any[], itemsPerPage: number, currentPage: number) {\n    if (!itemsPerPage)\n      return lista;\n    const result = lista.reduce((resultArray, item, index) => {\n      const chunkIndex = Math.floor(index / itemsPerPage);\n\n      if (!resultArray[chunkIndex])\n        resultArray[chunkIndex] = [];\n\n      resultArray[chunkIndex].push(item);\n\n      return resultArray;\n    }, []);\n\n    return result[currentPage];\n  }\n}\n"
+        },
+        {
+            "name": "SortPipe",
+            "id": "pipe-SortPipe-922b5b90827718d99b24be1248625860",
+            "file": "projects/clio-system/src/lib/tables/pipes/sort.pipe.ts",
+            "type": "pipe",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "lista",
+                            "type": "any[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "coluna",
+                            "type": "IPipeOrder",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "{}",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "lista",
+                            "type": "any[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "coluna",
+                            "type": "IPipeOrder",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "pure": false,
+            "ngname": "sort",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { IPipeOrder } from '../types_d';\n\n@Pipe({\n  name: 'sort',\n  pure: false\n})\nexport class SortPipe implements PipeTransform {\n\n  transform(lista: any[], coluna: IPipeOrder) {\n    console.log(lista, coluna )\n    const orderingDesc = (a: any, b: any, chave: string): number => {\n      if (a[chave] < b[chave]) {\n        return -1;\n      } else if (a[chave] > b[chave]) {\n        return 1;\n      } else {\n        return 0;\n      }\n    };\n\n    const orderingAsc = (a: any, b: any, chave: string): number => {\n      if (a[chave] > b[chave]) {\n        return -1;\n      } else if (a[chave] < b[chave]) {\n        return 1;\n      } else {\n        return 0;\n      }\n    };\n\n    if (coluna) {\n      const { key = null, ordering = null } = coluna;\n      lista.sort((a: any, b: any) => {\n        if (key)\n          return ordering === \"desc\" ?\n            orderingDesc(a, b, key) :\n            orderingAsc(a, b, key);\n        return 0;\n      });\n    }\n    return lista;\n  }\n}\n"
+        }
+    ],
+    "interfaces": [
+        {
+            "name": "IHeaders",
+            "id": "interface-IHeaders-9bd4438c4fc33e3cf0d40e1ee12425bf",
+            "file": "projects/clio-system/src/lib/tables/types_d.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IHeaders {\n    name: string;\n    key?: string,\n    sortble?: boolean;\n}\n\nexport interface IPipeOrder {\n    key?: string | null;\n    ordering?: 'desc' | 'asc';\n}\n\n",
+            "properties": [
+                {
+                    "name": "key",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "sortble",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 164,
+            "methods": []
+        },
+        {
+            "name": "IPipeOrder",
+            "id": "interface-IPipeOrder-9bd4438c4fc33e3cf0d40e1ee12425bf",
+            "file": "projects/clio-system/src/lib/tables/types_d.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IHeaders {\n    name: string;\n    key?: string,\n    sortble?: boolean;\n}\n\nexport interface IPipeOrder {\n    key?: string | null;\n    ordering?: 'desc' | 'asc';\n}\n\n",
+            "properties": [
+                {
+                    "name": "key",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | null",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "ordering",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"desc\" | \"asc\"",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 164,
+            "methods": []
+        }
+    ],
     "injectables": [],
     "guards": [],
     "interceptors": [],
@@ -40,7 +368,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '~material-design-icons/iconfont/material-icons.css'\n\n.cs-card\n    font-family: 'Inter', sans-serif\n    padding: 10px\n    border-radius: 5px\n    border-width: thin\n    display: block\n    max-width: 100%\n    outline: none\n    text-decoration: none\n    transition-property: box-shadow, opacity\n    overflow-wrap: break-word\n    position: relative\n    white-space: normal\n    background-color: #FFFFFF\n\n    &-shadow\n        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12) !important",
+                    "data": "\n.cs-card\n    font-family: 'Inter', sans-serif\n    padding: 10px\n    border-radius: 5px\n    border-width: thin\n    display: block\n    max-width: 100%\n    outline: none\n    text-decoration: none\n    transition-property: box-shadow, opacity\n    overflow-wrap: break-word\n    position: relative\n    white-space: normal\n    background-color: #FFFFFF\n\n    &-shadow\n        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12) !important",
                     "styleUrl": "./card.component.sass"
                 }
             ],
@@ -86,6 +414,335 @@
             ],
             "stylesData": "",
             "templateData": "<i class=\"material-icons\">\n    <ng-content>\n    </ng-content>\n</i>"
+        },
+        {
+            "name": "InputComponent",
+            "id": "component-InputComponent-df6358bedeb222dacb5c4f9dd167e166",
+            "file": "projects/clio-system/src/lib/input/input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cs-input",
+            "styleUrls": [
+                "./input.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./input.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "model",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string"
+                },
+                {
+                    "name": "placeholder",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string"
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "modelChange",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onKeyPress",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "handleChangeModel",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "onHandlechangeHiddenPassword",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "passwordHidden",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "clearModel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'cs-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.sass']\n})\nexport class InputComponent {\n  @Input() type?: string;\n  @Input() placeholder?: string;\n  @Input() name?: string;\n\n  @Input() model?: string;\n  @Output() modelChange = new EventEmitter<any>();\n  @Output() onKeyPress = new EventEmitter<any>();\n\n  passwordHidden = true;\n\n  handleChangeModel = (event: any) => {\n    this.modelChange.emit(event.target.value);\n    this.onKeyPress.emit();\n  };\n\n  clearModel() {\n    this.model = '';\n    this.modelChange.emit(this.model);\n    this.onKeyPress.emit();\n  }\n\n  onHandlechangeHiddenPassword = () => this.passwordHidden = !this.passwordHidden;\n\n  get showSearchIcon() {\n    return this.model === '' && this.type == 'search';\n  }\n\n  get showClearIcon() {\n    return this.model !== '' && this.type == 'search';\n  }\n\n  get passwordMode() {\n    return this.type === 'password';\n  }\n\n  get showPasswordIcon() {\n    return this.passwordHidden ? 'visibility' : 'visibility_off';\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../assets/styles/sass/colors\"\n@import '~material-design-icons/iconfont/material-icons.css'\n\n\n.cs-input-container\n    font-family: 'Inter', sans-serif\n    display: flex\n    text-align: center\n    align-items: center\n    position: relative\n\ni\n    position: absolute\n    z-index: 2\n    display: block\n    margin-right: 16px\n    text-align: center\n    color: $mediumGray\n    cursor: pointer\n    right: 0\n\ninput\n    width: 100%\n    padding: 8px\n    box-sizing: border-box\n    outline: none\n    color: $black\n    border: 1px solid $mediumGray\n    border-radius: 4px\n    font-size: 12px\n\n    &:focus\n        border: 1px solid $mainBlue\n\n    &:focus + .fa\n        color: $mainBlue\n\n    &::placeholder\n        color: $mediumGray\n\n   \n   \n    ",
+                    "styleUrl": "./input.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "showSearchIcon": {
+                    "name": "showSearchIcon",
+                    "getSignature": {
+                        "name": "showSearchIcon",
+                        "type": "",
+                        "returnType": "",
+                        "line": 32
+                    }
+                },
+                "showClearIcon": {
+                    "name": "showClearIcon",
+                    "getSignature": {
+                        "name": "showClearIcon",
+                        "type": "",
+                        "returnType": "",
+                        "line": 36
+                    }
+                },
+                "passwordMode": {
+                    "name": "passwordMode",
+                    "getSignature": {
+                        "name": "passwordMode",
+                        "type": "",
+                        "returnType": "",
+                        "line": 40
+                    }
+                },
+                "showPasswordIcon": {
+                    "name": "showPasswordIcon",
+                    "getSignature": {
+                        "name": "showPasswordIcon",
+                        "type": "",
+                        "returnType": "",
+                        "line": 44
+                    }
+                }
+            },
+            "templateData": "<div class=\"cs-input-container\">\n    <input [type]=\"passwordMode && passwordHidden ? 'password':'text'\" [placeholder]=\"placeholder\" [name]=\"name\"\n        [(ngModel)]=\"model\" (keydown)=\"handleChangeModel($event)\">\n    <i class=\"material-icons\" *ngIf=\"showSearchIcon\"> search </i>\n    <i class=\"material-icons\" *ngIf=\"showClearIcon\" (click)=\"clearModel()\"> close </i>\n    <i class=\"material-icons\" *ngIf=\"passwordMode\" (click)=\"onHandlechangeHiddenPassword()\"> {{showPasswordIcon}} </i>\n\n</div>\n<!-- <ng-container #clear></ng-container>\n<ng-container #search></ng-container>\n<ng-container #load></ng-container> -->"
+        },
+        {
+            "name": "PaginationComponent",
+            "id": "component-PaginationComponent-1f0de815418ddbc387fcae789b8bbe92",
+            "file": "projects/clio-system/src/lib/pagination/pagination.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cs-pagination",
+            "styleUrls": [
+                "./pagination.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./pagination.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "currentPage",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "number"
+                },
+                {
+                    "name": "itemsPerPage",
+                    "defaultValue": "10",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "number"
+                },
+                {
+                    "name": "list",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "Array<any>"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "currentPageChange",
+                    "defaultValue": "new EventEmitter<number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "handleChangeCurrentPage",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "next",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "previous",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "setSelectionPage",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n\n@Component({\n  selector: 'cs-pagination',\n  templateUrl: './pagination.component.html',\n  styleUrls: ['./pagination.component.sass']\n})\nexport class PaginationComponent {\n\n  @Input() itemsPerPage = 10;\n  @Input() currentPage = 0;\n  @Output() currentPageChange = new EventEmitter<number>();\n\n\n  @Input() list: Array<any> = [];\n\n  handleChangeCurrentPage = () => this.currentPageChange.emit(this.currentPage);\n\n  previous() {\n    if (this.currentPage > 0) {\n      this.currentPage--;\n      this.handleChangeCurrentPage();\n    }\n  }\n  next() {\n    if (this.currentPage <= this.nPages)\n      this.currentPage++;\n    this.handleChangeCurrentPage();\n\n  }\n\n  setSelectionPage(event: any) {\n    this.currentPage = parseInt(event.target.value);\n    this.handleChangeCurrentPage();\n  }\n\n  get nRows() {\n    return this.list.length;\n  }\n\n  get nPages() {\n    return Math.floor(this.nRows / this.itemsPerPage);\n  }\n\n  get optionPages() {\n    return Array(this.nPages).fill(1).map((x, i) => i);\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\n@import '~material-design-icons/iconfont/material-icons.css'\n@import \"../../assets/styles/sass/colors\"\n\nselect\n    cursor: pointer\n    position: relative\n    font-family: 'Inter', sans-serif\n    font-size: 14px\n    color: $black\n    border-radius: 4px\n    background-color: $white \n\n.cs-map\n    font-weight: bold\n\n.cs-actions\n    display: flex\n\n.cs-page-text\n    margin-right: 8px\n    font-weight: 700\n\n.cs-options-pages\n    padding: 0 16px\n\n.cs-pagination\n    font-family: 'Inter', sans-serif\n    width: 100%\n    display: flex\n    background-color: #fafafa\n    color: $darkGray\n    font-size: 12px\n    padding: 16px\n    justify-content: space-between\n    align-items: center\n\ni\n    color: $lightGray\n    font-size: 12px\n    cursor: pointer\n\n    &:hover\n        color: $mediumBlue\n        transition: 0.7\n",
+                    "styleUrl": "./pagination.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "nRows": {
+                    "name": "nRows",
+                    "getSignature": {
+                        "name": "nRows",
+                        "type": "",
+                        "returnType": "",
+                        "line": 38
+                    }
+                },
+                "nPages": {
+                    "name": "nPages",
+                    "getSignature": {
+                        "name": "nPages",
+                        "type": "",
+                        "returnType": "",
+                        "line": 42
+                    }
+                },
+                "optionPages": {
+                    "name": "optionPages",
+                    "getSignature": {
+                        "name": "optionPages",
+                        "type": "",
+                        "returnType": "",
+                        "line": 46
+                    }
+                }
+            },
+            "templateData": "<div class=\"cs-pagination\">\n    <div class=\"cs-map\">\n        {{currentPage + 1}} - {{nPages + 1}} de {{nRows}}\n    </div>\n    <div class=\"cs-actions\">\n        \n        <div class=\"cs-options-pages\">\n            <span class=\"cs-page-text\">\n                Página\n            </span>\n            \n            <select (change)=\"setSelectionPage($event)\">\n                <option *ngFor=\"let opt of optionPages\" [value]=\"opt\" [selected]=\"opt\">{{opt + 1}}</option>\n            </select>\n        </div>\n       \n        <div class=\"cs-action-arrows\">\n            <i class=\"material-icons\" id=\"previous\" (click)=\"previous()\">\n                chevron_left\n            </i>\n            <i class=\"material-icons\" id=\"next\" (click)=\"next()\">\n                navigate_next\n            </i>\n        </div>\n\n    </div>\n</div>"
         },
         {
             "name": "SwitchComponent",
@@ -155,6 +812,206 @@
             ],
             "stylesData": "",
             "templateData": "<label class=\"cs-switch\">\n    <input type=\"checkbox\" [checked]=\"model\" (change)=\"handleChangeModel()\">\n    <span class=\"cs-slider cs-round\"></span>\n</label>"
+        },
+        {
+            "name": "TablesComponent",
+            "id": "component-TablesComponent-d38e0915be158e9f711e65eba36e2473",
+            "file": "projects/clio-system/src/lib/tables/tables.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cs-tables",
+            "styleUrls": [
+                "./tables.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tables.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "headers",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "IHeaders[]"
+                },
+                {
+                    "name": "paginate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string"
+                },
+                {
+                    "name": "rows",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "Array<any>"
+                },
+                {
+                    "name": "rowsTemplate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "any"
+                },
+                {
+                    "name": "search",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onSearch",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "searchChange",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "currentPage",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "handleChangeSearchModel",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53
+                },
+                {
+                    "name": "itemsPerPage",
+                    "defaultValue": "10",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "selectedColum",
+                    "defaultValue": "{\n    key: 'id',\n    ordering: 'desc'\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IPipeOrder",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "handleSelectColum",
+                    "args": [
+                        {
+                            "type": "IHeaders",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "type": "IHeaders",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "sortbleTeme",
+                    "args": [
+                        {
+                            "type": "IHeaders",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "{ 'cs-colum-sortble': any; }",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "type": "IHeaders",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { IHeaders, IPipeOrder } from './types_d';\n\n\n@Component({\n  selector: 'cs-tables',\n  templateUrl: './tables.component.html',\n  styleUrls: ['./tables.component.sass']\n})\n\nexport class TablesComponent {\n\n  @Input() rowsTemplate: any;\n\n  @Input() search?: string;\n\n  @Input() paginate?: string;\n\n  @Output() searchChange = new EventEmitter<any>();\n\n  @Output() onSearch = new EventEmitter<any>();\n\n  @Input() headers: IHeaders[] = [];\n  @Input() rows: Array<any> = [];\n\n  selectedColum: IPipeOrder = {\n    key: 'id',\n    ordering: 'desc'\n  };\n\n  currentPage = 0;\n  itemsPerPage = 10;\n\n  handleSelectColum({ key, sortble }: IHeaders) {\n\n    if (key && sortble)\n      this.selectedColum = {\n        key,\n        ordering: this.selectedColum.ordering === 'desc' ? 'asc' : 'desc'\n      };\n  }\n\n  sortbleTeme({ sortble }: IHeaders) {\n    return {\n      'cs-colum-sortble': sortble\n    };\n  }\n\n  get showPagination() {\n    return this.paginate !== undefined;\n  }\n\n  handleChangeSearchModel = () => {\n    this.searchChange.emit(this.search);\n    this.onSearch.emit();\n  };\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../assets/styles/sass/colors\"\n\n.cs-table-roll\n  display: inline-block\n  width: 100%\n  height: calc(100% - 30px)\n  margin-top: 2px\n\ntable\n  font-family: 'Inter', sans-serif\n  width: 100%\n  table-layout: fixed\n  border-collapse: collapse\n\n  thead tr\n    height: 30px\n\n    th\n      text-align: left\n      font-size: 12px\n      color: $darkestGray\n\n  tbody\n    tr\n      height: 40px\n      border-bottom: 1px solid #CCCCCC\n\n    tr:last-child\n      border-bottom: none\n\n    td\n      font-size: 14px\n      text-align: left\n      vertical-align: middle\n      white-space: nowrap\n      text-overflow: ellipsis\n      overflow-wrap: break\n      padding: 8px 8px 8px 0\n\n\n.input-search\n  padding-bottom: 16px\n  width: 250px\n\n.cs-colum-sortble\n  cursor: pointer",
+                    "styleUrl": "./tables.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "showPagination": {
+                    "name": "showPagination",
+                    "getSignature": {
+                        "name": "showPagination",
+                        "type": "",
+                        "returnType": "",
+                        "line": 49
+                    }
+                }
+            },
+            "templateData": "<div>\n    <div class=\"input-search\">\n        <cs-input *ngIf=\"search !== undefined\" type=\"search\" placeholder=\"busque\" [(model)]=\"search\"\n            (onKeyPress)=\"handleChangeSearchModel($event)\"></cs-input>\n    </div>\n\n    <table>\n        <thead>\n            <tr>\n                <th *ngFor=\"let header of headers\" (click)=\"handleSelectColum(header)\" [ngClass]=\"sortbleTeme(header)\">\n                    {{header.name}}\n                </th>\n            </tr>\n        </thead>\n    </table>\n\n    <div *ngIf=\"rows\" class=\"cs-table-roll\">\n        <table>\n            <tbody>\n                <ng-template ngFor let-row\n                    [ngForOf]=\"rows | filter:search | sort: rows: selectedColum | pagination: itemsPerPage : currentPage\"\n                    let-i=\"index\" let-odd=\"odd\">\n                    <tr>\n                        <ng-template [ngTemplateOutlet]=\"rowsTemplate ? rowsTemplate :defalutTemplate\"\n                            [ngTemplateOutletContext]=\"{row, headers}\">\n                        </ng-template>\n                    </tr>\n                </ng-template>\n            </tbody>\n        </table>\n    </div>\n\n    <cs-pagination [list]=\"rows\" [itemsPerPage]=\"itemsPerPage\" [(currentPage)]=\"currentPage\" *ngIf=\"showPagination\">\n    </cs-pagination>\n\n    <ng-template #defalutTemplate let-row=\"row\" let-headers=\"headers\">\n        <td *ngFor=\"let header of headers\">\n            {{header?.key ? row[header.key] : ''}}\n        </td>\n    </ng-template>\n\n</div>"
         }
     ],
     "modules": [
@@ -289,6 +1146,160 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "InputModule",
+            "id": "module-InputModule-a97f5febe83c9fd648450ade63ea74ce",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/input/input.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input.component';\nimport { FormsModule } from '@angular/forms';\n\n@NgModule({\n  declarations: [\n    InputComponent\n  ],\n  imports: [\n    CommonModule,\n    FormsModule\n  ],\n  exports:[\n    InputComponent\n  ]\n})\nexport class InputModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "InputComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "InputComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "PaginationModule",
+            "id": "module-PaginationModule-313ef5d9b47680a8ccb656dadf1605f1",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/pagination/pagination.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { PaginationComponent } from './pagination.component';\n\n\n@NgModule({\n  declarations: [\n    PaginationComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports:[\n    PaginationComponent\n  ]\n})\nexport class PaginationModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "PaginationComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "PaginationComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "TablesModule",
+            "id": "module-TablesModule-c8fb50dc10bd4aa2e6fbda3ff940fdb2",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/tables/tables.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TablesComponent } from './tables.component';\nimport { FilterPipe } from './pipes/filter.pipe';\nimport { SortPipe } from './pipes/sort.pipe';\nimport { PaginationPipe } from './pipes/paginations.pipe';\nimport { PaginationModule } from '../pagination/pagination.module';\n\n@NgModule({\n  declarations: [\n    TablesComponent,\n    FilterPipe,\n    SortPipe,\n    PaginationPipe,\n  ],\n  imports: [\n    CommonModule,\n    PaginationModule\n  ],\n  exports: [\n    TablesComponent,\n    FilterPipe,\n    SortPipe,\n    PaginationPipe\n  ]\n})\nexport class TablesModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "FilterPipe"
+                        },
+                        {
+                            "name": "PaginationPipe"
+                        },
+                        {
+                            "name": "SortPipe"
+                        },
+                        {
+                            "name": "TablesComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "PaginationModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "FilterPipe"
+                        },
+                        {
+                            "name": "PaginationPipe"
+                        },
+                        {
+                            "name": "SortPipe"
+                        },
+                        {
+                            "name": "TablesComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
@@ -302,6 +1313,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "headers",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/tables/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\n    { name: 'ID', key: 'id', sortble: true },\n    { name: 'Nome', key: 'name', sortble: true },\n    { name: 'Email', key: 'email', sortble: true },\n    { name: 'ip Address' , key: 'ip_address'},\n]"
             },
             {
                 "name": "lorem",
@@ -337,7 +1358,37 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/tables/table.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -360,7 +1411,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<CardComponent>",
-                "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
+                "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardContent }}`,\n    props: args,\n})"
             },
             {
                 "name": "Template",
@@ -370,7 +1421,27 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<IconComponent>",
-                "defaultValue": "(args: IconComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
+                "defaultValue": "(args: IconComponent) => ({\n    template: `{{ iconName }}`,\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<PaginationComponent>",
+                "defaultValue": "(args: PaginationComponent) => ({\n    props: args,\n})"
             },
             {
                 "name": "Template",
@@ -381,6 +1452,16 @@
                 "deprecationMessage": "",
                 "type": "Story<SwitchComponent>",
                 "defaultValue": "(args: SwitchComponent) => ({\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/tables/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TablesComponent>",
+                "defaultValue": "(args: TablesComponent) => ({\n    props: args,\n})"
             }
         ],
         "functions": [],
@@ -406,6 +1487,38 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "literal type"
+                }
+            ],
+            "projects/clio-system/src/lib/tables/table.stories.ts": [
+                {
+                    "name": "headers",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/tables/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\n    { name: 'ID', key: 'id', sortble: true },\n    { name: 'Nome', key: 'name', sortble: true },\n    { name: 'Email', key: 'email', sortble: true },\n    { name: 'ip Address' , key: 'ip_address'},\n]"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/tables/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/tables/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TablesComponent>",
+                    "defaultValue": "(args: TablesComponent) => ({\n    props: args,\n})"
                 }
             ],
             "projects/clio-system/src/lib/card/card.stories.ts": [
@@ -437,7 +1550,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<CardComponent>",
-                    "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
+                    "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardContent }}`,\n    props: args,\n})"
                 }
             ],
             "projects/clio-system/src/lib/icon/icon.stories.ts": [
@@ -459,7 +1572,51 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<IconComponent>",
-                    "defaultValue": "(args: IconComponent) => ({\n    template: `{{ cardValue }}`,\n    props: args,\n})"
+                    "defaultValue": "(args: IconComponent) => ({\n    template: `{{ iconName }}`,\n    props: args,\n})"
+                }
+            ],
+            "projects/clio-system/src/lib/input/input.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n    props: args,\n})"
+                }
+            ],
+            "projects/clio-system/src/lib/pagination/pagination.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<PaginationComponent>",
+                    "defaultValue": "(args: PaginationComponent) => ({\n    props: args,\n})"
                 }
             ],
             "projects/clio-system/src/lib/switch/switch.stories.ts": [
@@ -563,6 +1720,64 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/clio-system/src/lib/input/input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/input/input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/input/input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/pagination/pagination.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PaginationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/clio-system/src/lib/switch/switch.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -589,6 +1804,90 @@
                 "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/tables/pipes/filter.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "FilterPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/tables/pipes/paginations.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "PaginationPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/tables/pipes/sort.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "SortPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/tables/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "headers",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/tables/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/tables/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/tables/tables.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TablesComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/tables/types_d.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IHeaders",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/tables/types_d.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IPipeOrder",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {

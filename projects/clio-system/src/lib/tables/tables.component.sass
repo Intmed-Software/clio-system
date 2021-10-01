@@ -1,0 +1,46 @@
+@import "../../assets/styles/sass/colors"
+
+.cs-table-roll
+  display: inline-block
+  width: 100%
+  height: calc(100% - 30px)
+  margin-top: 2px
+
+table
+  font-family: 'Inter', sans-serif
+  width: 100%
+  table-layout: fixed
+  border-collapse: collapse
+
+  thead tr
+    height: 30px
+
+    th
+      text-align: left
+      font-size: 12px
+      color: $darkestGray
+
+  tbody
+    tr
+      height: 40px
+      border-bottom: 1px solid #CCCCCC
+
+    tr:last-child
+      border-bottom: none
+
+    td
+      font-size: 14px
+      text-align: left
+      vertical-align: middle
+      white-space: nowrap
+      text-overflow: ellipsis
+      overflow-wrap: break
+      padding: 8px 8px 8px 0
+
+
+.input-search
+  padding-bottom: 16px
+  width: 250px
+
+.cs-colum-sortble
+  cursor: pointer

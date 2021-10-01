@@ -1,0 +1,42 @@
+<div>
+    <div class="input-search">
+        <cs-input *ngIf="search !== undefined" type="search" placeholder="busque" [(model)]="search"
+            (onKeyPress)="handleChangeSearchModel($event)"></cs-input>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let header of headers" (click)="handleSelectColum(header)" [ngClass]="sortbleTeme(header)">
+                    {{header.name}}
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+    <div *ngIf="rows" class="cs-table-roll">
+        <table>
+            <tbody>
+                <ng-template ngFor let-row
+                    [ngForOf]="rows | filter:search | sort: rows: selectedColum | pagination: itemsPerPage : currentPage"
+                    let-i="index" let-odd="odd">
+                    <tr>
+                        <ng-template [ngTemplateOutlet]="rowsTemplate ? rowsTemplate :defalutTemplate"
+                            [ngTemplateOutletContext]="{row, headers}">
+                        </ng-template>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+    </div>
+
+    <cs-pagination [list]="rows" [itemsPerPage]="itemsPerPage" [(currentPage)]="currentPage" *ngIf="showPagination">
+    </cs-pagination>
+
+    <ng-template #defalutTemplate let-row="row" let-headers="headers">
+        <td *ngFor="let header of headers">
+            {{header?.key ? row[header.key] : ''}}
+        </td>
+    </ng-template>
+
+</div>
