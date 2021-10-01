@@ -417,7 +417,7 @@
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-df6358bedeb222dacb5c4f9dd167e166",
+            "id": "component-InputComponent-9e6b962b3f7c2663e2f8feba6979ab90",
             "file": "projects/clio-system/src/lib/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -483,16 +483,6 @@
             ],
             "propertiesClass": [
                 {
-                    "name": "handleChangeModel",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 19
-                },
-                {
                     "name": "onHandlechangeHiddenPassword",
                     "defaultValue": "() => {...}",
                     "deprecated": false,
@@ -500,7 +490,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 34
                 },
                 {
                     "name": "passwordHidden",
@@ -520,7 +510,48 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleChangeModel",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -532,7 +563,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'cs-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.sass']\n})\nexport class InputComponent {\n  @Input() type?: string;\n  @Input() placeholder?: string;\n  @Input() name?: string;\n\n  @Input() model?: string;\n  @Output() modelChange = new EventEmitter<any>();\n  @Output() onKeyPress = new EventEmitter<any>();\n\n  passwordHidden = true;\n\n  handleChangeModel = (event: any) => {\n    this.modelChange.emit(event.target.value);\n    this.onKeyPress.emit();\n  };\n\n  clearModel() {\n    this.model = '';\n    this.modelChange.emit(this.model);\n    this.onKeyPress.emit();\n  }\n\n  onHandlechangeHiddenPassword = () => this.passwordHidden = !this.passwordHidden;\n\n  get showSearchIcon() {\n    return this.model === '' && this.type == 'search';\n  }\n\n  get showClearIcon() {\n    return this.model !== '' && this.type == 'search';\n  }\n\n  get passwordMode() {\n    return this.type === 'password';\n  }\n\n  get showPasswordIcon() {\n    return this.passwordHidden ? 'visibility' : 'visibility_off';\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';\n\n@Component({\n  selector: 'cs-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.sass']\n})\nexport class InputComponent implements OnInit{\n  @Input() type?: string;\n  @Input() placeholder?: string;\n  @Input() name?: string;\n\n  @Input() model?: string;\n  @Output() modelChange = new EventEmitter<any>();\n  @Output() onKeyPress = new EventEmitter<any>();\n\n  passwordHidden = true;\n\n  ngOnInit() {\n    console.log(this.model)\n  }\n\n  public handleChangeModel(event: any) {\n    this.modelChange.emit(event.target.value);\n    this.onKeyPress.emit();\n  };\n\n  clearModel() {\n    this.model = '';\n    this.modelChange.emit(this.model);\n    this.onKeyPress.emit();\n  }\n\n  onHandlechangeHiddenPassword = () => this.passwordHidden = !this.passwordHidden;\n\n  get showSearchIcon() {\n    return this.model === '' && this.type == 'search';\n  }\n\n  get showClearIcon() {\n    return this.model !== '' && this.type == 'search';\n  }\n\n  get passwordMode() {\n    return this.type === 'password';\n  }\n\n  get showPasswordIcon() {\n    return this.passwordHidden ? 'visibility' : 'visibility_off';\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -541,6 +572,9 @@
                 }
             ],
             "stylesData": "",
+            "implements": [
+                "OnInit"
+            ],
             "accessors": {
                 "showSearchIcon": {
                     "name": "showSearchIcon",
@@ -548,7 +582,7 @@
                         "name": "showSearchIcon",
                         "type": "",
                         "returnType": "",
-                        "line": 32
+                        "line": 36
                     }
                 },
                 "showClearIcon": {
@@ -557,7 +591,7 @@
                         "name": "showClearIcon",
                         "type": "",
                         "returnType": "",
-                        "line": 36
+                        "line": 40
                     }
                 },
                 "passwordMode": {
@@ -566,7 +600,7 @@
                         "name": "passwordMode",
                         "type": "",
                         "returnType": "",
-                        "line": 40
+                        "line": 44
                     }
                 },
                 "showPasswordIcon": {
@@ -575,11 +609,11 @@
                         "name": "showPasswordIcon",
                         "type": "",
                         "returnType": "",
-                        "line": 44
+                        "line": 48
                     }
                 }
             },
-            "templateData": "<div class=\"cs-input-container\">\n    <input [type]=\"passwordMode && passwordHidden ? 'password':'text'\" [placeholder]=\"placeholder\" [name]=\"name\"\n        [(ngModel)]=\"model\" (keydown)=\"handleChangeModel($event)\">\n    <i class=\"material-icons\" *ngIf=\"showSearchIcon\"> search </i>\n    <i class=\"material-icons\" *ngIf=\"showClearIcon\" (click)=\"clearModel()\"> close </i>\n    <i class=\"material-icons\" *ngIf=\"passwordMode\" (click)=\"onHandlechangeHiddenPassword()\"> {{showPasswordIcon}} </i>\n\n</div>\n<!-- <ng-container #clear></ng-container>\n<ng-container #search></ng-container>\n<ng-container #load></ng-container> -->"
+            "templateData": "<div class=\"cs-input-container\">\n    <input [type]=\"passwordMode && passwordHidden ? 'password':'text'\" [placeholder]=\"placeholder\" [name]=\"name\"\n        [(ngModel)]=\"model\" (keydown)=\"handleChangeModel($event)\">\n    <i class=\"material-icons\" *ngIf=\"showSearchIcon\"> search </i>\n    <i class=\"material-icons\" *ngIf=\"showClearIcon\" (click)=\"clearModel()\"> close </i>\n    <i class=\"material-icons\" *ngIf=\"passwordMode\" (click)=\"onHandlechangeHiddenPassword()\"> {{showPasswordIcon}} </i>\n</div>\n"
         },
         {
             "name": "PaginationComponent",
@@ -743,6 +777,76 @@
                 }
             },
             "templateData": "<div class=\"cs-pagination\">\n    <div class=\"cs-map\">\n        {{currentPage + 1}} - {{nPages + 1}} de {{nRows}}\n    </div>\n    <div class=\"cs-actions\">\n        \n        <div class=\"cs-options-pages\">\n            <span class=\"cs-page-text\">\n                Página\n            </span>\n            \n            <select (change)=\"setSelectionPage($event)\">\n                <option *ngFor=\"let opt of optionPages\" [value]=\"opt\" [selected]=\"opt\">{{opt + 1}}</option>\n            </select>\n        </div>\n       \n        <div class=\"cs-action-arrows\">\n            <i class=\"material-icons\" id=\"previous\" (click)=\"previous()\">\n                chevron_left\n            </i>\n            <i class=\"material-icons\" id=\"next\" (click)=\"next()\">\n                navigate_next\n            </i>\n        </div>\n\n    </div>\n</div>"
+        },
+        {
+            "name": "StoryBookTemplateComponent",
+            "id": "component-StoryBookTemplateComponent-15474d8f53828b38c31d45f46dc00d32",
+            "file": "projects/clio-system/src/lib/.story-book-template/story-book-template.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cs-story-book-template",
+            "styleUrls": [
+                "./story-book-template.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./story-book-template.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "api",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'cs-story-book-template',\n  templateUrl: './story-book-template.component.html',\n  styleUrls: ['./story-book-template.component.sass']\n})\nexport class StoryBookTemplateComponent implements OnInit {\n\n  @Input() api?: string\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../assets/styles/sass/colors\"\n\nh1\n    font-size: 16px\n    color: $darkestGray\n\n.main\n    font-family: 'Inter', sans-serif\n    background-color: $lightestGray\n    color: $black\n    min-height: 800px\n    padding: 16px\n\n.box\n    width: 97%\n    padding: 16px\n    border-radius: 4px\n    background-color: $white\n\n.mb\n    margin-bottom: 16px\n",
+                    "styleUrl": "./story-book-template.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 10
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"main\">\n    \n    <div class=\"box mb\">\n        <h1> API USAGE</h1>\n        <div [innerHtml]=\"api\"></div>\n    </div>\n\n    <div class=\"box\">\n        <h1> Component usage </h1>\n        <ng-content>\n        </ng-content>\n    </div>\n    \n</div>"
         },
         {
             "name": "SwitchComponent",
@@ -1305,6 +1409,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "api",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`import { InputModule } from 'clio-system';`"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1430,8 +1544,8 @@
                 "file": "projects/clio-system/src/lib/input/input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<InputComponent>",
-                "defaultValue": "(args: InputComponent) => ({\n    props: args,\n})"
+                "type": "Story<StoryBookTemplateComponent>",
+                "defaultValue": "(args: StoryBookTemplateComponent) => ({\n    props: args,\n    template: `\n    <cs-story-book-template api=\"${api}\">\n        <cs-input placeholder=\"busque\" type=\"password\"></cs-input>\n    </cs-story-book-template>\n    `\n})"
             },
             {
                 "name": "Template",
@@ -1468,6 +1582,38 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "projects/clio-system/src/lib/input/input.stories.ts": [
+                {
+                    "name": "api",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`import { InputModule } from 'clio-system';`"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<StoryBookTemplateComponent>",
+                    "defaultValue": "(args: StoryBookTemplateComponent) => ({\n    props: args,\n    template: `\n    <cs-story-book-template api=\"${api}\">\n        <cs-input placeholder=\"busque\" type=\"password\"></cs-input>\n    </cs-story-book-template>\n    `\n})"
+                }
+            ],
             "projects/clio-system/src/test.ts": [
                 {
                     "name": "context",
@@ -1575,28 +1721,6 @@
                     "defaultValue": "(args: IconComponent) => ({\n    template: `{{ iconName }}`,\n    props: args,\n})"
                 }
             ],
-            "projects/clio-system/src/lib/input/input.stories.ts": [
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n    props: args,\n})"
-                }
-            ],
             "projects/clio-system/src/lib/pagination/pagination.stories.ts": [
                 {
                     "name": "Primary",
@@ -1651,6 +1775,15 @@
         "count": 0,
         "status": "low",
         "files": [
+            {
+                "filePath": "projects/clio-system/src/lib/.story-book-template/story-book-template.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "StoryBookTemplateComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
             {
                 "filePath": "projects/clio-system/src/lib/card/card.component.ts",
                 "type": "component",
@@ -1725,7 +1858,17 @@
                 "linktype": "component",
                 "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/11",
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/input/input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "api",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

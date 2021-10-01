@@ -2,8 +2,6 @@
 
 Nossa biblioteca conta com dependências adicionais. Esteja ciente:
 
-- "@angular/cdk": "^12.2.8",
-- "@angular/material": "^12.2.8",
 - "material-design-icons": "^3.0.1",
 
 ### Instalação do projeto
@@ -34,4 +32,7 @@ Para buildar a biblioteca, rode:
 
 
 ### Utils
-[material-icons](https://fonts.google.com/icons?selected=Material+Icons&icon.query=arrow, "material-icons")
+
+[Clio library](https://www.figma.com/file/e7FDuNOCfxju0hI2n1QOTm/Design-System-Clio---Documenta%C3%A7%C3%A3o?node-id=32%3A539 "Clio library")
+
+[material-icons](https://fonts.google.com/icons?selected=Material+Icons "material-icons")

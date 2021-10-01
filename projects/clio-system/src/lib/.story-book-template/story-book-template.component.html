@@ -1,0 +1,19 @@
+<div class="main">
+    
+    <div class="box mb">
+        <h1> API USAGE</h1>
+        <div [innerHtml]="api"></div>
+    </div>
+
+    <div class="box mb" *ngIf="componentSelector">
+        <h1> Component Selector exemple</h1>
+        <div [innerHtml]="componentSelector"></div>
+    </div>
+
+    <div class="box">
+        <h1> Component usage </h1>
+        <ng-content>
+        </ng-content>
+    </div>
+    
+</div>

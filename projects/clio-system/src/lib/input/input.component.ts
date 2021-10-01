@@ -6,19 +6,18 @@ import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
   styleUrls: ['./input.component.sass']
 })
 export class InputComponent implements OnInit{
+  
+  @Input() model? = '';
   @Input() type?: string;
-  @Input() placeholder?: string;
   @Input() name?: string;
+  @Input() placeholder?: string;
 
-  @Input() model?: string;
   @Output() modelChange = new EventEmitter<any>();
   @Output() onKeyPress = new EventEmitter<any>();
 
   passwordHidden = true;
 
-  ngOnInit() {
-    console.log(this.model)
-  }
+  ngOnInit() {}
 
   public handleChangeModel(event: any) {
     this.modelChange.emit(event.target.value);
@@ -34,11 +33,11 @@ export class InputComponent implements OnInit{
   onHandlechangeHiddenPassword = () => this.passwordHidden = !this.passwordHidden;
 
   get showSearchIcon() {
-    return this.model === '' && this.type == 'search';
+    return this.type == 'search';
   }
 
-  get showClearIcon() {
-    return this.model !== '' && this.type == 'search';
+  get searchIcon() {
+    return this.model === '' &&  this.showSearchIcon ?  'search' : 'close'
   }
 
   get passwordMode() {
