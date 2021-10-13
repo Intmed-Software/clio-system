@@ -5,7 +5,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { PaginationPipe } from './pipes/paginations.pipe';
 import { PaginationModule } from '../pagination/pagination.module';
-
+import { InputModule } from '../input/input.module';
 @NgModule({
   declarations: [
     TablesComponent,
@@ -15,7 +15,8 @@ import { PaginationModule } from '../pagination/pagination.module';
   ],
   imports: [
     CommonModule,
-    PaginationModule
+    PaginationModule,
+    InputModule
   ],
   exports: [
     TablesComponent,

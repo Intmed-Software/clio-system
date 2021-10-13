@@ -14,6 +14,9 @@ export * from './lib/icon/icon.module';
 export * from './lib/tables/tables.component';
 export * from './lib/tables/tables.module';
 export * from './lib/tables/types_d';
+export * from './lib/tables/pipes/filter.pipe'
+export * from './lib/tables/pipes/paginations.pipe'
+export * from './lib/tables/pipes/sort.pipe'
 
 /* Pagination */;
 

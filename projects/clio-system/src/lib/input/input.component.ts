@@ -7,9 +7,9 @@ import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 })
 export class InputComponent implements OnInit{
   
-  @Input() model? = '';
+  @Input() model = '';
   @Input() type?: string;
-  @Input() name?: string;
+  @Input() name = '';
   @Input() placeholder?: string;
 
   @Output() modelChange = new EventEmitter<any>();
