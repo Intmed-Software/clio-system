@@ -8,7 +8,6 @@ import { IPipeOrder } from '../types_d';
 export class SortPipe implements PipeTransform {
 
   transform(lista: any[], coluna: IPipeOrder) {
-    console.log(lista, coluna )
     const orderingDesc = (a: any, b: any, chave: string): number => {
       if (a[chave] < b[chave]) {
         return -1;

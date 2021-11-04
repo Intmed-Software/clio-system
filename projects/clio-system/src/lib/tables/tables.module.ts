@@ -5,7 +5,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { PaginationPipe } from './pipes/paginations.pipe';
 import { PaginationModule } from '../pagination/pagination.module';
-import { InputModule } from '../input/input.module';
+import { TextFieldModule } from '../text-field/text-field.module';
 @NgModule({
   declarations: [
     TablesComponent,
@@ -16,7 +16,7 @@ import { InputModule } from '../input/input.module';
   imports: [
     CommonModule,
     PaginationModule,
-    InputModule
+    TextFieldModule
   ],
   exports: [
     TablesComponent,

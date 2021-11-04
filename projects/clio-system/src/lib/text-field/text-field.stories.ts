@@ -1,15 +1,15 @@
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
-import { InputComponent } from './input.component';
+import { TextFieldComponent } from './text-field.component';
 import { StoryBookTemplateComponent } from '../.story-book-template/story-book-template.component';
 
 
 export default {
-    title: 'Input',
+    title: 'TextField',
     component: StoryBookTemplateComponent,
     decorators: [
         moduleMetadata({
             declarations: [
-                InputComponent
+                TextFieldComponent
             ]
         })
     ]

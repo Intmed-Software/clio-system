@@ -1,6 +1,6 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import users from '../../assets/mocks/users';
-import { InputModule } from '../input/input.module';
+import { TextFieldModule } from '../text-field/text-field.module';
 import { PaginationModule } from '../pagination/pagination.module';
 import { FilterPipe } from './pipes/filter.pipe';
 import { PaginationPipe } from './pipes/paginations.pipe';
@@ -19,7 +19,7 @@ export default {
             ],
             imports: [
                 PaginationModule,
-                InputModule
+                TextFieldModule
             ]
         }),
     ]
