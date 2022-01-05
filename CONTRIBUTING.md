@@ -8,4 +8,4 @@
 
 - O componente só será mergado de tiver a aprovação de pelo menos 3 revisores **(de times diferentes)**
 
-- Caso o recursos que esteja sento editado tenha relação com layout, mande prints da tela na descrição da PR
+- Caso o recursos que esteja sendo editado tenha relação com layout, mande prints da tela na descrição da PR

@@ -196,7 +196,7 @@
         },
         {
             "name": "SortPipe",
-            "id": "pipe-SortPipe-922b5b90827718d99b24be1248625860",
+            "id": "pipe-SortPipe-bc1a666bd49057ffca7e54cfc87d4981",
             "file": "projects/clio-system/src/lib/tables/pipes/sort.pipe.ts",
             "type": "pipe",
             "deprecated": false,
@@ -251,7 +251,7 @@
             ],
             "pure": false,
             "ngname": "sort",
-            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { IPipeOrder } from '../types_d';\n\n@Pipe({\n  name: 'sort',\n  pure: false\n})\nexport class SortPipe implements PipeTransform {\n\n  transform(lista: any[], coluna: IPipeOrder) {\n    console.log(lista, coluna )\n    const orderingDesc = (a: any, b: any, chave: string): number => {\n      if (a[chave] < b[chave]) {\n        return -1;\n      } else if (a[chave] > b[chave]) {\n        return 1;\n      } else {\n        return 0;\n      }\n    };\n\n    const orderingAsc = (a: any, b: any, chave: string): number => {\n      if (a[chave] > b[chave]) {\n        return -1;\n      } else if (a[chave] < b[chave]) {\n        return 1;\n      } else {\n        return 0;\n      }\n    };\n\n    if (coluna) {\n      const { key = null, ordering = null } = coluna;\n      lista.sort((a: any, b: any) => {\n        if (key)\n          return ordering === \"desc\" ?\n            orderingDesc(a, b, key) :\n            orderingAsc(a, b, key);\n        return 0;\n      });\n    }\n    return lista;\n  }\n}\n"
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { IPipeOrder } from '../types_d';\n\n@Pipe({\n  name: 'sort',\n  pure: false\n})\nexport class SortPipe implements PipeTransform {\n\n  transform(lista: any[], coluna: IPipeOrder) {\n    const orderingDesc = (a: any, b: any, chave: string): number => {\n      if (a[chave] < b[chave]) {\n        return -1;\n      } else if (a[chave] > b[chave]) {\n        return 1;\n      } else {\n        return 0;\n      }\n    };\n\n    const orderingAsc = (a: any, b: any, chave: string): number => {\n      if (a[chave] > b[chave]) {\n        return -1;\n      } else if (a[chave] < b[chave]) {\n        return 1;\n      } else {\n        return 0;\n      }\n    };\n\n    if (coluna) {\n      const { key = null, ordering = null } = coluna;\n      lista.sort((a: any, b: any) => {\n        if (key)\n          return ordering === \"desc\" ?\n            orderingDesc(a, b, key) :\n            orderingAsc(a, b, key);\n        return 0;\n      });\n    }\n    return lista;\n  }\n}\n"
         }
     ],
     "interfaces": [
@@ -414,207 +414,6 @@
             ],
             "stylesData": "",
             "templateData": "<i class=\"material-icons\">\n    <ng-content>\n    </ng-content>\n</i>"
-        },
-        {
-            "name": "InputComponent",
-            "id": "component-InputComponent-dee3e70d3baf9377db2a0e0b9224b1d5",
-            "file": "projects/clio-system/src/lib/input/input.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "cs-input",
-            "styleUrls": [
-                "./input.component.sass"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./input.component.html"
-            ],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "model",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 10,
-                    "type": "string"
-                },
-                {
-                    "name": "name",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 12,
-                    "type": "string"
-                },
-                {
-                    "name": "placeholder",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string"
-                },
-                {
-                    "name": "type",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 11,
-                    "type": "string"
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "modelChange",
-                    "defaultValue": "new EventEmitter<any>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 15,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onKeyPress",
-                    "defaultValue": "new EventEmitter<any>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 16,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [
-                {
-                    "name": "onHandlechangeHiddenPassword",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 33
-                },
-                {
-                    "name": "passwordHidden",
-                    "defaultValue": "true",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 18
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "clearModel",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 27,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "handleChangeModel",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "any",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 22,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        123
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "any",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 20,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';\n\n@Component({\n  selector: 'cs-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.sass']\n})\nexport class InputComponent implements OnInit{\n  \n  @Input() model? = '';\n  @Input() type?: string;\n  @Input() name?: string;\n  @Input() placeholder?: string;\n\n  @Output() modelChange = new EventEmitter<any>();\n  @Output() onKeyPress = new EventEmitter<any>();\n\n  passwordHidden = true;\n\n  ngOnInit() {}\n\n  public handleChangeModel(event: any) {\n    this.modelChange.emit(event.target.value);\n    this.onKeyPress.emit();\n  };\n\n  clearModel() {\n    this.model = '';\n    this.modelChange.emit(this.model);\n    this.onKeyPress.emit();\n  }\n\n  onHandlechangeHiddenPassword = () => this.passwordHidden = !this.passwordHidden;\n\n  get showSearchIcon() {\n    return this.type == 'search';\n  }\n\n  get searchIcon() {\n    return this.model === '' &&  this.showSearchIcon ?  'search' : 'close'\n  }\n\n  get passwordMode() {\n    return this.type === 'password';\n  }\n\n  get showPasswordIcon() {\n    return this.passwordHidden ? 'visibility' : 'visibility_off';\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "@import \"../../assets/styles/sass/colors\"\n@import '~material-design-icons/iconfont/material-icons.css'\n\n\n.cs-input-container\n    font-family: 'Inter', sans-serif\n    display: flex\n    text-align: center\n    align-items: center\n    position: relative\n\ni\n    position: absolute\n    z-index: 2\n    display: block\n    margin-right: 16px\n    text-align: center\n    color: $mediumGray\n    cursor: pointer\n    right: 0\n\ninput\n    width: 100%\n    padding: 8px\n    box-sizing: border-box\n    outline: none\n    color: $black\n    border: 1px solid $mediumGray\n    border-radius: 4px\n    font-size: 12px\n\n    &:focus\n        border: 1px solid $mainBlue\n\n    &:focus + .fa\n        color: $mainBlue\n\n    &::placeholder\n        color: $mediumGray\n\n   \n   \n    ",
-                    "styleUrl": "./input.component.sass"
-                }
-            ],
-            "stylesData": "",
-            "implements": [
-                "OnInit"
-            ],
-            "accessors": {
-                "showSearchIcon": {
-                    "name": "showSearchIcon",
-                    "getSignature": {
-                        "name": "showSearchIcon",
-                        "type": "",
-                        "returnType": "",
-                        "line": 35
-                    }
-                },
-                "searchIcon": {
-                    "name": "searchIcon",
-                    "getSignature": {
-                        "name": "searchIcon",
-                        "type": "",
-                        "returnType": "",
-                        "line": 39
-                    }
-                },
-                "passwordMode": {
-                    "name": "passwordMode",
-                    "getSignature": {
-                        "name": "passwordMode",
-                        "type": "",
-                        "returnType": "",
-                        "line": 43
-                    }
-                },
-                "showPasswordIcon": {
-                    "name": "showPasswordIcon",
-                    "getSignature": {
-                        "name": "showPasswordIcon",
-                        "type": "",
-                        "returnType": "",
-                        "line": 47
-                    }
-                }
-            },
-            "templateData": "<div class=\"cs-input-container\">\n    <input [type]=\"passwordMode && passwordHidden ? 'password':'text'\" [placeholder]=\"placeholder\" [name]=\"name\"\n        [(ngModel)]=\"model\" (keydown)=\"handleChangeModel($event)\">\n    <i class=\"material-icons\" *ngIf=\"showSearchIcon\" (click)=\"clearModel()\">\n        {{searchIcon}}\n    </i>\n    <i class=\"material-icons\" *ngIf=\"passwordMode\" (click)=\"onHandlechangeHiddenPassword()\">\n        {{showPasswordIcon}}\n    </i>\n</div>"
         },
         {
             "name": "PaginationComponent",
@@ -1123,7 +922,355 @@
                     }
                 }
             },
-            "templateData": "<div>\n    <div class=\"input-search\">\n        <cs-input *ngIf=\"search !== undefined\" type=\"search\" placeholder=\"busque\" [(model)]=\"search\"\n            (onKeyPress)=\"handleChangeSearchModel($event)\"></cs-input>\n    </div>\n\n    <table>\n        <thead>\n            <tr>\n                <th *ngFor=\"let header of headers\" (click)=\"handleSelectColum(header)\" [ngClass]=\"sortbleTeme(header)\">\n                    {{header.name}}\n                </th>\n            </tr>\n        </thead>\n    </table>\n\n    <div *ngIf=\"rows\" class=\"cs-table-roll\">\n        <table>\n            <tbody>\n                <ng-template ngFor let-row\n                    [ngForOf]=\"rows | filter:search | sort: rows: selectedColum | pagination: itemsPerPage : currentPage\"\n                    let-i=\"index\" let-odd=\"odd\">\n                    <tr>\n                        <ng-template [ngTemplateOutlet]=\"rowsTemplate ? rowsTemplate :defalutTemplate\"\n                            [ngTemplateOutletContext]=\"{row, headers}\">\n                        </ng-template>\n                    </tr>\n                </ng-template>\n            </tbody>\n        </table>\n    </div>\n\n    <cs-pagination [list]=\"rows\" [itemsPerPage]=\"itemsPerPage\" [(currentPage)]=\"currentPage\" *ngIf=\"showPagination\">\n    </cs-pagination>\n\n    <ng-template #defalutTemplate let-row=\"row\" let-headers=\"headers\">\n        <td *ngFor=\"let header of headers\">\n            {{header?.key ? row[header.key] : ''}}\n        </td>\n    </ng-template>\n\n</div>"
+            "templateData": "<div>\n    <div class=\"input-search\">\n        <cs-input *ngIf=\"search !== undefined\" type=\"search\" placeholder=\"busque\" [(model)]=\"search\"\n            (onKeyPress)=\"handleChangeSearchModel()\"></cs-input>\n    </div>\n\n    <table>\n        <thead>\n            <tr>\n                <th *ngFor=\"let header of headers\" (click)=\"handleSelectColum(header)\" [ngClass]=\"sortbleTeme(header)\">\n                    {{header.name}}\n                </th>\n            </tr>\n        </thead>\n    </table>\n\n    <div *ngIf=\"rows\" class=\"cs-table-roll\">\n        <table>\n            <tbody>\n                <ng-template ngFor let-row\n                    [ngForOf]=\"rows | filter:search | pagination: itemsPerPage : currentPage\"\n                    let-i=\"index\" let-odd=\"odd\">\n                    <tr>\n                        <ng-template [ngTemplateOutlet]=\"rowsTemplate ? rowsTemplate :defalutTemplate\"\n                            [ngTemplateOutletContext]=\"{row, headers}\">\n                        </ng-template>\n                    </tr>\n                </ng-template>\n            </tbody>\n        </table>\n    </div>\n\n    <cs-pagination [list]=\"rows\" [itemsPerPage]=\"itemsPerPage\" [(currentPage)]=\"currentPage\" *ngIf=\"showPagination\">\n    </cs-pagination>\n\n    <ng-template #defalutTemplate let-row=\"row\" let-headers=\"headers\">\n        <td *ngFor=\"let header of headers\">\n            {{header?.key ? row[header.key] : ''}}\n        </td>\n    </ng-template>\n\n</div>"
+        },
+        {
+            "name": "TextFieldComponent",
+            "id": "component-TextFieldComponent-169c5d29a3ccc31ecf826da1504a3333",
+            "file": "projects/clio-system/src/lib/text-field/text-field.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TextFieldComponent), multi: true\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "cs-input",
+            "styleUrls": [
+                "./text-field.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./text-field.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "boolean"
+                },
+                {
+                    "name": "model",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string"
+                },
+                {
+                    "name": "placeholder",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "string"
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "modelChange",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onKeyPress",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "onHandlechangeHiddenPassword",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 45
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "passwordHidden",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "clearModel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleChangeModel",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": true,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, OnInit, forwardRef } from '@angular/core';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\n\n\n@Component({\n  selector: 'cs-input',\n  templateUrl: './text-field.component.html',\n  styleUrls: ['./text-field.component.sass'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => TextFieldComponent),\n      multi: true\n    }\n  ]\n})\nexport class TextFieldComponent implements OnInit, ControlValueAccessor {\n\n  @Input() model = '';\n  @Input() type?: string;\n  @Input() name = '';\n  @Input() placeholder?: string;\n  @Input() disabled = false;\n  @Output() modelChange = new EventEmitter<any>();\n  @Output() onKeyPress = new EventEmitter<any>();\n\n  passwordHidden = true;\n\n  onChange: any = () => { };\n  onTouched: any = () => { };\n\n  ngOnInit() { }\n\n  public handleChangeModel(event: any) {\n    this.modelChange.emit(event.target.value);\n    this.onKeyPress.emit();\n  };\n\n  clearModel() {\n    this.model = '';\n    this.modelChange.emit(this.model);\n    this.onKeyPress.emit();\n  }\n\n  onHandlechangeHiddenPassword = () => this.passwordHidden = !this.passwordHidden;\n  \n  /* ControlValueAccessor functions*/\n\n  writeValue(value: any) {\n    this.model = value;\n  }\n  registerOnChange(fn: any) {\n    this.onChange = fn;\n  }\n  registerOnTouched(fn: any) {\n    this.onTouched = fn;\n  }\n  setDisabledState?(isDisabled: boolean) {\n    this.disabled = isDisabled;\n  }\n\n  get showSearchIcon() {\n    return this.type == 'search';\n  }\n\n  get searchIcon() {\n    return this.model === '' && this.showSearchIcon ? 'search' : 'close';\n  }\n\n  get passwordMode() {\n    return this.type === 'password';\n  }\n\n  get showPasswordIcon() {\n    return this.passwordHidden ? 'visibility' : 'visibility_off';\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../assets/styles/sass/colors\"\n@import '~material-design-icons/iconfont/material-icons.css'\n\n\n.cs-input-container\n    font-family: 'Inter', sans-serif\n    display: flex\n    text-align: center\n    align-items: center\n    position: relative\n\ni\n    position: absolute\n    z-index: 2\n    display: block\n    margin-right: 16px\n    text-align: center\n    color: $mediumGray\n    cursor: pointer\n    right: 0\n\ninput\n    width: 100%\n    padding: 8px\n    box-sizing: border-box\n    outline: none\n    color: $black\n    border: 1px solid $mediumGray\n    border-radius: 4px\n    font-size: 12px\n\n    &:focus\n        border: 1px solid $mainBlue\n\n    &:focus + .fa\n        color: $mainBlue\n\n    &::placeholder\n        color: $mediumGray\n\n   \n   \n    ",
+                    "styleUrl": "./text-field.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnInit",
+                "ControlValueAccessor"
+            ],
+            "accessors": {
+                "showSearchIcon": {
+                    "name": "showSearchIcon",
+                    "getSignature": {
+                        "name": "showSearchIcon",
+                        "type": "",
+                        "returnType": "",
+                        "line": 62
+                    }
+                },
+                "searchIcon": {
+                    "name": "searchIcon",
+                    "getSignature": {
+                        "name": "searchIcon",
+                        "type": "",
+                        "returnType": "",
+                        "line": 66
+                    }
+                },
+                "passwordMode": {
+                    "name": "passwordMode",
+                    "getSignature": {
+                        "name": "passwordMode",
+                        "type": "",
+                        "returnType": "",
+                        "line": 70
+                    }
+                },
+                "showPasswordIcon": {
+                    "name": "showPasswordIcon",
+                    "getSignature": {
+                        "name": "showPasswordIcon",
+                        "type": "",
+                        "returnType": "",
+                        "line": 74
+                    }
+                }
+            },
+            "templateData": "<div class=\"cs-input-container\">\n    <input [type]=\"passwordMode && passwordHidden ? 'password':'text'\" [placeholder]=\"placeholder\" [name]=\"name\"\n        [(ngModel)]=\"model\" (keydown)=\"handleChangeModel($event)\">\n    <i class=\"material-icons\" *ngIf=\"showSearchIcon\" (click)=\"clearModel()\">\n        {{searchIcon}}\n    </i>\n    <i class=\"material-icons\" *ngIf=\"passwordMode\" (click)=\"onHandlechangeHiddenPassword()\">\n        {{showPasswordIcon}}\n    </i>\n</div>"
         }
     ],
     "modules": [
@@ -1260,50 +1407,6 @@
             ]
         },
         {
-            "name": "InputModule",
-            "id": "module-InputModule-a97f5febe83c9fd648450ade63ea74ce",
-            "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
-            "file": "projects/clio-system/src/lib/input/input.module.ts",
-            "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputComponent } from './input.component';\nimport { FormsModule } from '@angular/forms';\n\n@NgModule({\n  declarations: [\n    InputComponent\n  ],\n  imports: [\n    CommonModule,\n    FormsModule\n  ],\n  exports:[\n    InputComponent\n  ]\n})\nexport class InputModule { }\n",
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "InputComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "imports",
-                    "elements": []
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "InputComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
             "name": "PaginationModule",
             "id": "module-PaginationModule-313ef5d9b47680a8ccb656dadf1605f1",
             "description": "",
@@ -1349,13 +1452,13 @@
         },
         {
             "name": "TablesModule",
-            "id": "module-TablesModule-c8fb50dc10bd4aa2e6fbda3ff940fdb2",
+            "id": "module-TablesModule-5fb479c42233b49f914307d62b7d16d0",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/clio-system/src/lib/tables/tables.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TablesComponent } from './tables.component';\nimport { FilterPipe } from './pipes/filter.pipe';\nimport { SortPipe } from './pipes/sort.pipe';\nimport { PaginationPipe } from './pipes/paginations.pipe';\nimport { PaginationModule } from '../pagination/pagination.module';\n\n@NgModule({\n  declarations: [\n    TablesComponent,\n    FilterPipe,\n    SortPipe,\n    PaginationPipe,\n  ],\n  imports: [\n    CommonModule,\n    PaginationModule\n  ],\n  exports: [\n    TablesComponent,\n    FilterPipe,\n    SortPipe,\n    PaginationPipe\n  ]\n})\nexport class TablesModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TablesComponent } from './tables.component';\nimport { FilterPipe } from './pipes/filter.pipe';\nimport { SortPipe } from './pipes/sort.pipe';\nimport { PaginationPipe } from './pipes/paginations.pipe';\nimport { PaginationModule } from '../pagination/pagination.module';\nimport { TextFieldModule } from '../text-field/text-field.module';\n@NgModule({\n  declarations: [\n    TablesComponent,\n    FilterPipe,\n    SortPipe,\n    PaginationPipe,\n  ],\n  imports: [\n    CommonModule,\n    PaginationModule,\n    TextFieldModule\n  ],\n  exports: [\n    TablesComponent,\n    FilterPipe,\n    SortPipe,\n    PaginationPipe\n  ]\n})\nexport class TablesModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -1383,6 +1486,9 @@
                     "elements": [
                         {
                             "name": "PaginationModule"
+                        },
+                        {
+                            "name": "TextFieldModule"
                         }
                     ]
                 },
@@ -1412,6 +1518,50 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "TextFieldModule",
+            "id": "module-TextFieldModule-d7f557f55fb9ec371767ec1a8f629394",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/text-field/text-field.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TextFieldComponent } from './text-field.component';\nimport { FormsModule } from '@angular/forms';\n\n@NgModule({\n  declarations: [\n    TextFieldComponent\n  ],\n  imports: [\n    CommonModule,\n    FormsModule\n  ],\n  exports:[\n    TextFieldComponent\n  ]\n})\nexport class TextFieldModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "TextFieldComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "TextFieldComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
@@ -1420,7 +1570,7 @@
                 "name": "api",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                "file": "projects/clio-system/src/lib/text-field/text-field.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1480,16 +1630,6 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/input/input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1511,6 +1651,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/clio-system/src/lib/tables/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/text-field/text-field.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1549,16 +1699,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/input/input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<StoryBookTemplateComponent>",
-                "defaultValue": "(args: StoryBookTemplateComponent) => ({\n    props: args,\n    template: `\n    <cs-story-book-template api=\"${api}\">\n        <div style=\"width:500px\">\n        Simple\n            <cs-input placeholder=\"busque\"></cs-input>\n        </div>\n        <div style=\"width:500px; margin-top:20px\">\n            Password\n            <cs-input placeholder=\"busque\" type=\"password\"></cs-input>\n        </div>\n        <div style=\"width:200px; margin-top:20px\">\n            search\n            <cs-input placeholder=\"busque\" type=\"search\"></cs-input>\n        </div>\n    </cs-story-book-template>\n    `\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1584,18 +1724,28 @@
                 "deprecationMessage": "",
                 "type": "Story<TablesComponent>",
                 "defaultValue": "(args: TablesComponent) => ({\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/text-field/text-field.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<StoryBookTemplateComponent>",
+                "defaultValue": "(args: StoryBookTemplateComponent) => ({\n    props: args,\n    template: `\n    <cs-story-book-template api=\"${api}\">\n        <div style=\"width:500px\">\n        Simple\n            <cs-input placeholder=\"busque\"></cs-input>\n        </div>\n        <div style=\"width:500px; margin-top:20px\">\n            Password\n            <cs-input placeholder=\"busque\" type=\"password\"></cs-input>\n        </div>\n        <div style=\"width:200px; margin-top:20px\">\n            search\n            <cs-input placeholder=\"busque\" type=\"search\"></cs-input>\n        </div>\n    </cs-story-book-template>\n    `\n})"
             }
         ],
         "functions": [],
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "projects/clio-system/src/lib/input/input.stories.ts": [
+            "projects/clio-system/src/lib/text-field/text-field.stories.ts": [
                 {
                     "name": "api",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                    "file": "projects/clio-system/src/lib/text-field/text-field.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1605,7 +1755,7 @@
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                    "file": "projects/clio-system/src/lib/text-field/text-field.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1615,7 +1765,7 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                    "file": "projects/clio-system/src/lib/text-field/text-field.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<StoryBookTemplateComponent>",
@@ -1861,45 +2011,6 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/clio-system/src/lib/input/input.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "InputComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/12",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/clio-system/src/lib/input/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "api",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/clio-system/src/lib/input/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/clio-system/src/lib/input/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
                 "filePath": "projects/clio-system/src/lib/pagination/pagination.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -2039,6 +2150,45 @@
                 "name": "IPipeOrder",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/text-field/text-field.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TextFieldComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/19",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/text-field/text-field.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "api",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/text-field/text-field.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/text-field/text-field.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
