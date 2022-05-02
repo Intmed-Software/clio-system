@@ -2,6 +2,7 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CircularProgressComponent } from '../circular-progress/circular-progress.component';
+import { CircularProgressModule } from '../circular-progress/circular-progress.module';
 import { ButtonComponent } from './button.component';
 
 describe('MainButtonComponent', () => {
@@ -11,7 +12,13 @@ describe('MainButtonComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ ButtonComponent , CircularProgressComponent]
+			declarations: [
+				ButtonComponent ,
+				CircularProgressComponent
+			],
+			imports: [
+				CircularProgressModule
+			]
 		}).compileComponents();
 	});
 

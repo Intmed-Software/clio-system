@@ -1,0 +1,26 @@
+<div
+    id="chip" 
+    [class]="className"
+>
+    <div class="chip-content">
+        <div *ngIf="label">
+        </div>
+        <div *ngIf="label; else contentCase">
+            {{label}}
+        </div>
+        <ng-template #contentCase>
+            <div>
+                <ng-content></ng-content>
+            </div>
+        </ng-template>
+
+        <clio-icon 
+            class="close-icon" 
+            *ngIf="actionClose"
+            [size]="18" 
+            (click)="onHandleClickClose()"
+        > 
+            cancel
+        </clio-icon>
+    </div>
+</div>

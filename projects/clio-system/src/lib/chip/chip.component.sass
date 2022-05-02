@@ -1,0 +1,72 @@
+@import ../../assets/styles/sass/colors
+@import ../../assets/styles/sass/sizes
+@import ../../assets/styles/sass/mixins
+
+@mixin chip-properties-contained($background, $color)
+    background-color: $background
+    color: $color
+
+@mixin chip-properties-outlined($mainColor)
+    background-color: transparent
+    color: $mainColor
+    border: 1px solid $mainColor
+
+@mixin aling-center-center()
+    display: flex
+    align-items: center
+    
+
+.chip
+    display: inline-block
+    padding: 0.281rem 1rem // 4.5px 16px
+    font-size: $small
+    font-weight: 400
+    position: relative
+    border-radius: 100px
+    justify-content: space-between
+    box-sizing: border-box
+    @include fontStyle()
+    
+.chip-content
+    @include aling-center-center()
+    
+.close-icon
+    margin-left: 0.5rem
+    cursor: pointer
+    @include aling-center-center()
+
+// Contained
+.contained-primary-dark
+    @include chip-properties-contained($mainBlue, $white)
+
+.contained-primary-light
+    @include chip-properties-contained($lightBlue, $mainBlue)
+
+.contained-warning-dark
+    @include chip-properties-contained($mediumAlert, $white)
+
+.contained-warning-light
+    @include chip-properties-contained($lightAlert, $darkAlert)
+
+.contained-error-dark
+    @include chip-properties-contained($mediumError, $white)
+
+.contained-error-light
+    @include chip-properties-contained($lightError, $mediumError)
+
+.contained-success-dark
+    @include chip-properties-contained($darkSuccess, $white)
+
+.contained-success-light
+    @include chip-properties-contained($lightSuccess, $darkSuccess)
+
+// oulined
+
+.outlined-primary
+    @include chip-properties-outlined($mainBlue)
+
+.outlined-warning
+    @include chip-properties-outlined($darkAlert)
+
+.outlined-error
+    @include chip-properties-outlined($mediumError)

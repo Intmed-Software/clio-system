@@ -337,7 +337,7 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-127021e2b93c491e4568ec5b18ea2b2c",
+            "id": "component-ButtonComponent-eaf13c49e433ba3f61dc2f55cfdbc856",
             "file": "projects/clio-system/src/lib/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -416,18 +416,7 @@
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "buttonAtributes",
-                    "defaultValue": "{}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "optional": false,
-                    "description": "",
-                    "line": 36
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [
                 {
                     "name": "ngOnInit",
@@ -435,7 +424,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -447,11 +436,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport { BooleanInput } from '../../utils/boolean-Input';\nimport { SizeProps, VariantProps } from './types_d';\n\n\n@Component({\n\tselector: 'clio-button',\n\ttemplateUrl: './button.component.html',\n\tstyleUrls: ['./button.component.sass'],\n})\nexport class ButtonComponent implements OnInit {\n  @Input() variant: VariantProps | undefined;\n  @Input() size: SizeProps = 'medium';\n  @Input() @BooleanInput() fullWidth: any;\n  @Input() @BooleanInput() loading = false;\n  @Input() disabled = false;\n  @Input() type = 'button';\n  @Input() label: string | undefined;\n  @Input() buttonIcon: string | undefined;\n\n\n  get iconSize() {\n  \tswitch (this.size) {\n   \tcase 'medium':\n  \t\treturn 14;\n  \tcase 'small':\n  \t\treturn 12;\n  \tcase 'large':\n  \t\treturn 24;\n  \tdefault:\n  \t\treturn 14;\n  \t}\n  }\n\n  // eslint-disable-next-line @typescript-eslint/member-ordering\n  buttonAtributes = {};\n\n  ngOnInit(): void {\n  \tthis.buttonAtributes = {\n  \t\tfullWidth: this.fullWidth,\n  \t\ttext: this.variant === 'text',\n  \t\toutlined: this.variant === 'outlined',\n  \t\tcontained: this.variant === 'contained',\n  \t\t'size-small': this.size === 'small',\n  \t\t'size-medium': this.size === 'medium',\n  \t};\n  }\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport { BooleanInput } from '../../utils/boolean-Input';\nimport { SizeProps, VariantProps } from './types_d';\n\n\n@Component({\n\tselector: 'clio-button',\n\ttemplateUrl: './button.component.html',\n\tstyleUrls: ['./button.component.sass'],\n})\nexport class ButtonComponent implements OnInit {\n  @Input() variant: VariantProps | undefined;\n  @Input() size: SizeProps = 'medium';\n  @Input() @BooleanInput() fullWidth: any;\n  @Input() @BooleanInput() loading = false;\n  @Input() disabled = false;\n  @Input() type = 'button';\n  @Input() label: string | undefined;\n  @Input() buttonIcon: string | undefined;\n\n\n  get iconSize() {\n  \tswitch (this.size) {\n   \tcase 'medium':\n  \t\treturn 14;\n  \tcase 'small':\n  \t\treturn 12;\n  \tcase 'large':\n  \t\treturn 24;\n  \tdefault:\n  \t\treturn 14;\n  \t}\n  }\n\n  get buttonClassAttributs() {\n  \treturn {\n  \t\tfullWidth: this.fullWidth,\n  \t\ttext: this.variant === 'text',\n  \t\toutlined: this.variant === 'outlined',\n  \t\tcontained: this.variant === 'contained',\n  \t\t'size-small': this.size === 'small',\n  \t\t'size-medium': this.size === 'medium',\n  \t};\n  }\n\n  get loadingCase() {\n  \treturn {\n  \t\thideContainer: this.loading\n  \t};\n  }\n\n  ngOnInit(): void {}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "// @import ../../assets/styles/sass/colors\n@import ../../assets/styles/sass/sizes\n@import ../../assets/styles/sass/mixins\n\n/* Group blue */\n$mainBlue: #034DA4\n$mediumBlue: #3589E9\n$darkBlue: #002B5C\n$accentBlue: #E8F2FC\n$focusBlue:#2B96E9\n\n/* Group gray */\n$darkestGray: #4D5B6A\n$darkGray: #768393\n$mediumGray:  #A2ACB9\n$lightGray: #D0D6DC\n$lightestGray:  #E9EAED\n\n/* Group Success*/\n$darkSuccess: #075F10\n$mediumSuccess: #25A731\n$lightSuccess: #D6F1D9\n\n/* Group alerts */\n$DarkAlert: #A36700\n$MediumAlert: #F29E0D\n$LightAlert: #F5E6CC\n\n/* Gropt errors */\n$DarkError: #940505\n$MediumError: #D72828\n$LightError: #F8D2D2\n\n/* Neutral Colors */\n$white: #FAFAFA\n$Background: #EEF0F1\n$black: #27323F\nbutton\n    padding: 0.469rem 1rem // 7.5px  16px \n    border-radius: 4px\n    font-size: $xs // 12px\n    font-weight: 700\n    outline: none\n    cursor: pointer\n    color: $black\n    background-color: transparent\n    border: none\n    position: relative\n    @include fontStyle()\n\n    &:hover\n       background-color: $accentBlue\n       transition: 0.3s\n       color: $mainBlue\n\n    &:disabled\n        cursor: not-allowed\n\n    &:active\n        background-color: $darkBlue\n        color: $white\n\n.contained\n    background: $mainBlue\n    color: $white\n    border: 0.125rem solid $mainBlue // 2px\n\n    &:disabled\n        background: $lightGray\n        color: $white\n        border: 0.125rem solid $lightGray // 2px\n\n.text\n    background-color: transparent\n    color: $mainBlue\n    border: 0.125rem solid transparent // 2px\n\n    &:hover\n       background-color: transparent\n       color: $mainBlue\n\n    &:disabled\n        color: $lightGray\n\n.outlined\n    background-color: transparent\n    color: $mainBlue\n    border: 0.125rem solid $mainBlue // 2px\n\n    &:disabled\n        color: $lightGray\n        border: 0.125rem solid $lightGray // 2px\n\n.fullWidth\n    width: 100%\n\n.hideContainer\n    visibility: hidden\n    opacity: 0\n\n.size-small\n    font-size: $xs // 12px\n    \n.size-medium\n    font-size: $small // 14px\n\n.loading-container\n    position: absolute\n    left: calc(50% - 7.5px)\n    top: calc(50% - 7.5px)\n    width: 100%\n    height: 100%\n",
+                    "data": "@import ../../assets/styles/sass/colors\n@import ../../assets/styles/sass/sizes\n@import ../../assets/styles/sass/mixins\n\nbutton\n    padding: 0.469rem 1rem // 7.5px  16px \n    border-radius: 4px\n    font-size: $xs // 12px\n    font-weight: 700\n    outline: none\n    cursor: pointer\n    color: $black\n    background-color: transparent\n    border: none\n    position: relative\n    @include fontStyle()\n\n    &:hover\n       background-color: $accentBlue\n       transition: 0.3s\n       color: $mainBlue\n\n    &:disabled\n        cursor: not-allowed\n\n    &:active\n        background-color: $darkBlue\n        color: $white\n\n.contained\n    background: $mainBlue\n    color: $white\n    border: 0.125rem solid $mainBlue // 2px\n\n    &:disabled\n        background: $lightGray\n        color: $white\n        border: 0.125rem solid $lightGray // 2px\n\n.text\n    background-color: transparent\n    color: $mainBlue\n    border: 0.125rem solid transparent // 2px\n\n    &:hover\n       background-color: transparent\n       color: $mainBlue\n\n    &:disabled\n        color: $lightGray\n\n.outlined\n    background-color: transparent\n    color: $mainBlue\n    border: 0.125rem solid $mainBlue // 2px\n\n    &:disabled\n        color: $lightGray\n        border: 0.125rem solid $lightGray // 2px\n\n.fullWidth\n    width: 100%\n\n.hideContainer\n    visibility: hidden\n    opacity: 0\n\n.size-small\n    font-size: $xs // 12px\n    \n.size-medium\n    font-size: $small // 14px\n\n.loading-container\n    position: absolute\n    left: calc(50% - 7.5px)\n    top: calc(50% - 7.5px)\n    width: 100%\n    height: 100%\n",
                     "styleUrl": "./button.component.sass"
                 }
             ],
@@ -468,9 +457,27 @@
                         "returnType": "",
                         "line": 22
                     }
+                },
+                "buttonClassAttributs": {
+                    "name": "buttonClassAttributs",
+                    "getSignature": {
+                        "name": "buttonClassAttributs",
+                        "type": "",
+                        "returnType": "",
+                        "line": 35
+                    }
+                },
+                "loadingCase": {
+                    "name": "loadingCase",
+                    "getSignature": {
+                        "name": "loadingCase",
+                        "type": "",
+                        "returnType": "",
+                        "line": 46
+                    }
                 }
             },
-            "templateData": "<button\n  id=\"clio-button\"\n  [type]=\"type\"\n  [ngClass]=\"buttonAtributes\"\n  [disabled]=\"disabled || loading\"\n>\n  <span [ngClass]=\"{ hideContainer: loading }\">\n    <clio-icon *ngIf=\"buttonIcon\" [size]=\"iconSize\" id=\"icon-button-content\">\n      {{ buttonIcon }}\n    </clio-icon>\n    <div *ngIf=\"!buttonIcon\">\n      <span *ngIf=\"label\" id=\"simple-button-content\">\n        {{ label }}\n      </span>\n      <span *ngIf=\"!label\" id=\"simple-button-content\">\n        <ng-content></ng-content>\n      </span>\n    </div>\n  </span>\n  <div *ngIf=\"loading\" class=\"loading-container\" id=\"loading-button-content\">\n    <clio-circular-progress size=\"15\"></clio-circular-progress>\n  </div>\n</button>\n"
+            "templateData": "<button\n  id=\"clio-button\"\n  [type]=\"type\"\n  [ngClass]=\"buttonClassAttributs\"\n  [disabled]=\"disabled || loading\"\n>\n  <span [ngClass]=\"loadingCase\">\n    <clio-icon *ngIf=\"buttonIcon\" [size]=\"iconSize\" id=\"icon-button-content\">\n      {{ buttonIcon }}\n    </clio-icon>\n    <div *ngIf=\"!buttonIcon\">\n      <span *ngIf=\"label\" id=\"simple-button-content\">\n        {{ label }}\n      </span>\n      <span *ngIf=\"!label\" id=\"simple-button-content\">\n        <ng-content></ng-content>\n      </span>\n    </div>\n  </span>\n  <div *ngIf=\"loading\" class=\"loading-container\" id=\"loading-button-content\">\n    <clio-circular-progress size=\"15\"></clio-circular-progress>\n  </div>\n</button>\n"
         },
         {
             "name": "CardComponent",
@@ -511,6 +518,125 @@
             ],
             "stylesData": "",
             "templateData": "<div class=\"cs-card cs-card-shadow\">\n    <ng-content>\n    </ng-content>\n</div>"
+        },
+        {
+            "name": "ChipComponent",
+            "id": "component-ChipComponent-237c29db9808b37fcd5ed130712b4486",
+            "file": "projects/clio-system/src/lib/chip/chip.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "clio-chip",
+            "styleUrls": [
+                "./chip.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./chip.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "actionClose",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "any"
+                },
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "ColorProps"
+                },
+                {
+                    "name": "customClass",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "string | undefined"
+                },
+                {
+                    "name": "dark",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "boolean"
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string | undefined"
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'contained'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "VariantProps"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClose",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "onHandleClickClose",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n\tComponent,\n\tEventEmitter,\n\tInput, Output,\n\tViewEncapsulation\n} from '@angular/core';\nimport { BooleanInput } from '../../utils/boolean-Input';\nimport { ColorProps, VariantProps } from './types_d';\n\n@Component({\n\tselector: 'clio-chip',\n\ttemplateUrl: './chip.component.html',\n\tstyleUrls: ['./chip.component.sass'],\n\tencapsulation: ViewEncapsulation.None,\n})\nexport class ChipComponent {\n  @Input() @BooleanInput() actionClose: any;\n  @Input() variant: VariantProps = 'contained';\n  @Input() label: string | undefined;\n  @Input() dark = true;\n  @Input() color: ColorProps = 'primary';\n  @Input() customClass: string | undefined;\n  // eslint-disable-next-line @angular-eslint/no-output-on-prefix\n  @Output() onClose = new EventEmitter<any>();\n\n  get className() {\n  \tconst createClass = (): string => {\n  \t\tconst type = this.variant === 'outlined' ? null : this.dark ? 'dark' : 'light';\n  \t\tconst cls: any[] = [this.variant, this.color];\n  \t\tif (type) {cls.push(type);}\n  \t\treturn 'chip ' + cls.join('-');\n  \t};\n  \treturn this.customClass ?  `chip ${this.customClass}` : createClass();\n  }\n\n  onHandleClickClose = () => this.onClose.emit({});\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import ../../assets/styles/sass/colors\n@import ../../assets/styles/sass/sizes\n@import ../../assets/styles/sass/mixins\n\n@mixin chip-properties-contained($background, $color)\n    background-color: $background\n    color: $color\n\n@mixin chip-properties-outlined($mainColor)\n    background-color: transparent\n    color: $mainColor\n    border: 1px solid $mainColor\n\n@mixin aling-center-center()\n    display: flex\n    align-items: center\n    \n\n.chip\n    display: inline-block\n    padding: 0.281rem 1rem // 4.5px 16px\n    font-size: $small\n    font-weight: 400\n    position: relative\n    border-radius: 100px\n    justify-content: space-between\n    box-sizing: border-box\n    @include fontStyle()\n    \n.chip-content\n    @include aling-center-center()\n    \n.close-icon\n    margin-left: 0.5rem\n    cursor: pointer\n    @include aling-center-center()\n\n// Contained\n.contained-primary-dark\n    @include chip-properties-contained($mainBlue, $white)\n\n.contained-primary-light\n    @include chip-properties-contained($lightBlue, $mainBlue)\n\n.contained-warning-dark\n    @include chip-properties-contained($mediumAlert, $white)\n\n.contained-warning-light\n    @include chip-properties-contained($lightAlert, $darkAlert)\n\n.contained-error-dark\n    @include chip-properties-contained($mediumError, $white)\n\n.contained-error-light\n    @include chip-properties-contained($lightError, $mediumError)\n\n.contained-success-dark\n    @include chip-properties-contained($darkSuccess, $white)\n\n.contained-success-light\n    @include chip-properties-contained($lightSuccess, $darkSuccess)\n\n// oulined\n\n.outlined-primary\n    @include chip-properties-outlined($mainBlue)\n\n.outlined-warning\n    @include chip-properties-outlined($darkAlert)\n\n.outlined-error\n    @include chip-properties-outlined($mediumError)",
+                    "styleUrl": "./chip.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "className": {
+                    "name": "className",
+                    "getSignature": {
+                        "name": "className",
+                        "type": "",
+                        "returnType": "",
+                        "line": 26
+                    }
+                }
+            },
+            "templateData": "<div\n    id=\"chip\" \n    [class]=\"className\"\n>\n    <div class=\"chip-content\">\n        <div *ngIf=\"label\">\n        </div>\n        <div *ngIf=\"label; else contentCase\">\n            {{label}}\n        </div>\n        <ng-template #contentCase>\n            <div>\n                <ng-content></ng-content>\n            </div>\n        </ng-template>\n\n        <clio-icon \n            class=\"close-icon\" \n            *ngIf=\"actionClose\"\n            [size]=\"18\" \n            (click)=\"onHandleClickClose()\"\n        > \n            cancel\n        </clio-icon>\n    </div>\n</div>\n"
         },
         {
             "name": "CircularProgressComponent",
@@ -1420,6 +1546,54 @@
             ]
         },
         {
+            "name": "ChipModule",
+            "id": "module-ChipModule-21662a6a1189e35e691b9ff2cb80c2b9",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/chip/chip.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { IconModule } from '../icon/icon.module';\nimport { ChipComponent } from './chip.component';\n\n@NgModule({\n\tdeclarations: [ChipComponent],\n\timports: [CommonModule, IconModule],\n\texports: [ChipComponent],\n})\nexport class ChipModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ChipComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "IconModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ChipComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "CircularProgressModule",
             "id": "module-CircularProgressModule-4b7fb16b1c59535700d72faa9b5a21a8",
             "description": "",
@@ -1782,6 +1956,26 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/chip/chip.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/icon/icon.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1802,17 +1996,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/card/card.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                "file": "projects/clio-system/src/lib/tables/table.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1832,7 +2016,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/tables/table.stories.ts",
+                "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1851,31 +2035,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/icon/icon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<IconComponent>",
-                "defaultValue": "(args: IconComponent) => ({\n    template: `{{ iconName }}`,\n    props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ButtonComponent>",
                 "defaultValue": "args => ({\n\tprops: args\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<PaginationComponent>",
-                "defaultValue": "(args: PaginationComponent) => ({\n    props: args,\n})"
             },
             {
                 "name": "Template",
@@ -1891,11 +2055,41 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                "file": "projects/clio-system/src/lib/chip/chip.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<SwitchComponent>",
-                "defaultValue": "(args: SwitchComponent) => ({\n\tprops: args,\n})"
+                "type": "Story<ChipComponent>",
+                "defaultValue": "args => ({\n\tprops: args\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<IconComponent>",
+                "defaultValue": "(args: IconComponent) => ({\n    template: `{{ iconName }}`,\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<PaginationComponent>",
+                "defaultValue": "(args: PaginationComponent) => ({\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/tables/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TablesComponent>",
+                "defaultValue": "(args: TablesComponent) => ({\n    props: args,\n})"
             },
             {
                 "name": "Template",
@@ -1911,17 +2105,27 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/tables/table.stories.ts",
+                "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<TablesComponent>",
-                "defaultValue": "(args: TablesComponent) => ({\n    props: args,\n})"
+                "type": "Story<SwitchComponent>",
+                "defaultValue": "(args: SwitchComponent) => ({\n\tprops: args,\n})"
             },
             {
                 "name": "Text",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/clio-system/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Warning",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/chip/chip.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1954,6 +2158,17 @@
                 "kind": 185
             },
             {
+                "name": "ColorProps",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"primary\" | \"warning\" | \"error\" | \"success\"",
+                "file": "projects/clio-system/src/lib/chip/types_d.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 185
+            },
+            {
                 "name": "SizeProps",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -1970,6 +2185,17 @@
                 "subtype": "typealias",
                 "rawtype": "\"outlined\" | \"text\" | \"contained\"",
                 "file": "projects/clio-system/src/lib/button/types_d.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 185
+            },
+            {
+                "name": "VariantProps",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"outlined\" | \"contained\"",
+                "file": "projects/clio-system/src/lib/chip/types_d.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2147,6 +2373,38 @@
                     "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardContent }}`,\n    props: args,\n})"
                 }
             ],
+            "projects/clio-system/src/lib/chip/chip.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/chip/chip.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/chip/chip.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ChipComponent>",
+                    "defaultValue": "args => ({\n\tprops: args\n})"
+                },
+                {
+                    "name": "Warning",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/chip/chip.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
             "projects/clio-system/src/lib/icon/icon.stories.ts": [
                 {
                     "name": "Primary",
@@ -2265,6 +2523,30 @@
                     "description": "",
                     "kind": 185
                 }
+            ],
+            "projects/clio-system/src/lib/chip/types_d.ts": [
+                {
+                    "name": "ColorProps",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"primary\" | \"warning\" | \"error\" | \"success\"",
+                    "file": "projects/clio-system/src/lib/chip/types_d.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 185
+                },
+                {
+                    "name": "VariantProps",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"outlined\" | \"contained\"",
+                    "file": "projects/clio-system/src/lib/chip/types_d.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 185
+                }
             ]
         }
     },
@@ -2288,7 +2570,7 @@
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/11",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -2376,6 +2658,45 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/chip/chip.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChipComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/chip/chip.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/chip/chip.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/chip/chip.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Warning",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
