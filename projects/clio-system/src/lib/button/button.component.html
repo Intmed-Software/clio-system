@@ -1,0 +1,23 @@
+<button
+  id="clio-button"
+  [type]="type"
+  [ngClass]="buttonClassAttributs"
+  [disabled]="disabled || loading"
+>
+  <span [ngClass]="loadingCase">
+    <clio-icon *ngIf="buttonIcon" [size]="iconSize" id="icon-button-content">
+      {{ buttonIcon }}
+    </clio-icon>
+    <div *ngIf="!buttonIcon">
+      <span *ngIf="label" id="simple-button-content">
+        {{ label }}
+      </span>
+      <span *ngIf="!label" id="simple-button-content">
+        <ng-content></ng-content>
+      </span>
+    </div>
+  </span>
+  <div *ngIf="loading" class="loading-container" id="loading-button-content">
+    <clio-circular-progress size="15"></clio-circular-progress>
+  </div>
+</button>

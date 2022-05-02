@@ -336,6 +336,143 @@
     "directives": [],
     "components": [
         {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-127021e2b93c491e4568ec5b18ea2b2c",
+            "file": "projects/clio-system/src/lib/button/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "clio-button",
+            "styleUrls": [
+                "./button.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "buttonIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string | undefined"
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "boolean"
+                },
+                {
+                    "name": "fullWidth",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "any"
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string | undefined"
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "boolean"
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "SizeProps"
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string"
+                },
+                {
+                    "name": "variant",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "VariantProps | undefined"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "buttonAtributes",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport { BooleanInput } from '../../utils/boolean-Input';\nimport { SizeProps, VariantProps } from './types_d';\n\n\n@Component({\n\tselector: 'clio-button',\n\ttemplateUrl: './button.component.html',\n\tstyleUrls: ['./button.component.sass'],\n})\nexport class ButtonComponent implements OnInit {\n  @Input() variant: VariantProps | undefined;\n  @Input() size: SizeProps = 'medium';\n  @Input() @BooleanInput() fullWidth: any;\n  @Input() @BooleanInput() loading = false;\n  @Input() disabled = false;\n  @Input() type = 'button';\n  @Input() label: string | undefined;\n  @Input() buttonIcon: string | undefined;\n\n\n  get iconSize() {\n  \tswitch (this.size) {\n   \tcase 'medium':\n  \t\treturn 14;\n  \tcase 'small':\n  \t\treturn 12;\n  \tcase 'large':\n  \t\treturn 24;\n  \tdefault:\n  \t\treturn 14;\n  \t}\n  }\n\n  // eslint-disable-next-line @typescript-eslint/member-ordering\n  buttonAtributes = {};\n\n  ngOnInit(): void {\n  \tthis.buttonAtributes = {\n  \t\tfullWidth: this.fullWidth,\n  \t\ttext: this.variant === 'text',\n  \t\toutlined: this.variant === 'outlined',\n  \t\tcontained: this.variant === 'contained',\n  \t\t'size-small': this.size === 'small',\n  \t\t'size-medium': this.size === 'medium',\n  \t};\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// @import ../../assets/styles/sass/colors\n@import ../../assets/styles/sass/sizes\n@import ../../assets/styles/sass/mixins\n\n/* Group blue */\n$mainBlue: #034DA4\n$mediumBlue: #3589E9\n$darkBlue: #002B5C\n$accentBlue: #E8F2FC\n$focusBlue:#2B96E9\n\n/* Group gray */\n$darkestGray: #4D5B6A\n$darkGray: #768393\n$mediumGray:  #A2ACB9\n$lightGray: #D0D6DC\n$lightestGray:  #E9EAED\n\n/* Group Success*/\n$darkSuccess: #075F10\n$mediumSuccess: #25A731\n$lightSuccess: #D6F1D9\n\n/* Group alerts */\n$DarkAlert: #A36700\n$MediumAlert: #F29E0D\n$LightAlert: #F5E6CC\n\n/* Gropt errors */\n$DarkError: #940505\n$MediumError: #D72828\n$LightError: #F8D2D2\n\n/* Neutral Colors */\n$white: #FAFAFA\n$Background: #EEF0F1\n$black: #27323F\nbutton\n    padding: 0.469rem 1rem // 7.5px  16px \n    border-radius: 4px\n    font-size: $xs // 12px\n    font-weight: 700\n    outline: none\n    cursor: pointer\n    color: $black\n    background-color: transparent\n    border: none\n    position: relative\n    @include fontStyle()\n\n    &:hover\n       background-color: $accentBlue\n       transition: 0.3s\n       color: $mainBlue\n\n    &:disabled\n        cursor: not-allowed\n\n    &:active\n        background-color: $darkBlue\n        color: $white\n\n.contained\n    background: $mainBlue\n    color: $white\n    border: 0.125rem solid $mainBlue // 2px\n\n    &:disabled\n        background: $lightGray\n        color: $white\n        border: 0.125rem solid $lightGray // 2px\n\n.text\n    background-color: transparent\n    color: $mainBlue\n    border: 0.125rem solid transparent // 2px\n\n    &:hover\n       background-color: transparent\n       color: $mainBlue\n\n    &:disabled\n        color: $lightGray\n\n.outlined\n    background-color: transparent\n    color: $mainBlue\n    border: 0.125rem solid $mainBlue // 2px\n\n    &:disabled\n        color: $lightGray\n        border: 0.125rem solid $lightGray // 2px\n\n.fullWidth\n    width: 100%\n\n.hideContainer\n    visibility: hidden\n    opacity: 0\n\n.size-small\n    font-size: $xs // 12px\n    \n.size-medium\n    font-size: $small // 14px\n\n.loading-container\n    position: absolute\n    left: calc(50% - 7.5px)\n    top: calc(50% - 7.5px)\n    width: 100%\n    height: 100%\n",
+                    "styleUrl": "./button.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnInit"
+            ],
+            "accessors": {
+                "iconSize": {
+                    "name": "iconSize",
+                    "getSignature": {
+                        "name": "iconSize",
+                        "type": "",
+                        "returnType": "",
+                        "line": 22
+                    }
+                }
+            },
+            "templateData": "<button\n  id=\"clio-button\"\n  [type]=\"type\"\n  [ngClass]=\"buttonAtributes\"\n  [disabled]=\"disabled || loading\"\n>\n  <span [ngClass]=\"{ hideContainer: loading }\">\n    <clio-icon *ngIf=\"buttonIcon\" [size]=\"iconSize\" id=\"icon-button-content\">\n      {{ buttonIcon }}\n    </clio-icon>\n    <div *ngIf=\"!buttonIcon\">\n      <span *ngIf=\"label\" id=\"simple-button-content\">\n        {{ label }}\n      </span>\n      <span *ngIf=\"!label\" id=\"simple-button-content\">\n        <ng-content></ng-content>\n      </span>\n    </div>\n  </span>\n  <div *ngIf=\"loading\" class=\"loading-container\" id=\"loading-button-content\">\n    <clio-circular-progress size=\"15\"></clio-circular-progress>\n  </div>\n</button>\n"
+        },
+        {
             "name": "CardComponent",
             "id": "component-CardComponent-e6064bb9e3aa4441076ef57e6aa62452",
             "file": "projects/clio-system/src/lib/card/card.component.ts",
@@ -374,6 +511,66 @@
             ],
             "stylesData": "",
             "templateData": "<div class=\"cs-card cs-card-shadow\">\n    <ng-content>\n    </ng-content>\n</div>"
+        },
+        {
+            "name": "CircularProgressComponent",
+            "id": "component-CircularProgressComponent-3778a7faeb5e8868c0a2c68ef87dc748",
+            "file": "projects/clio-system/src/lib/circular-progress/circular-progress.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "clio-circular-progress",
+            "styleUrls": [
+                "./circular-progress.component.sass"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./circular-progress.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "size",
+                    "defaultValue": "'20'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string | number"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n\n@Component({\n\tselector: 'clio-circular-progress',\n\ttemplateUrl: './circular-progress.component.html',\n\tstyleUrls: ['./circular-progress.component.sass']\n})\nexport class CircularProgressComponent {\n\n  @Input() size: string | number = '20';\n\n  get loaderSize() {\n  \treturn `${this.size}px`;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import ../../assets/styles/sass/colors\n\n.loader\n  border: 2px solid $white\n  border-radius: 50%\n  border-top: 2px solid $mediumGray\n  width: 30px\n  height: 30px\n  -webkit-animation: spin 0.8s linear infinite\n  /* Safari\n  animation: spin 0.8s linear infinite\n\n/* Safari\n@-webkit-keyframes spin\n  0%\n    -webkit-transform: rotate(0deg)\n  100%\n    -webkit-transform: rotate(360deg)\n\n@keyframes spin\n  0%\n    transform: rotate(0deg)\n  100%\n    transform: rotate(360deg)",
+                    "styleUrl": "./circular-progress.component.sass"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "loaderSize": {
+                    "name": "loaderSize",
+                    "getSignature": {
+                        "name": "loaderSize",
+                        "type": "",
+                        "returnType": "",
+                        "line": 13
+                    }
+                }
+            },
+            "templateData": "<div \n    class=\"loader\"\n    [style.width]=\"loaderSize\"\n    [style.height]=\"loaderSize\"\n></div>"
         },
         {
             "name": "IconComponent",
@@ -618,7 +815,7 @@
         },
         {
             "name": "PaginationComponent",
-            "id": "component-PaginationComponent-1f0de815418ddbc387fcae789b8bbe92",
+            "id": "component-PaginationComponent-677548133a8b34b8a297570775ed7772",
             "file": "projects/clio-system/src/lib/pagination/pagination.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -716,7 +913,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -739,7 +936,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n\n@Component({\n  selector: 'cs-pagination',\n  templateUrl: './pagination.component.html',\n  styleUrls: ['./pagination.component.sass']\n})\nexport class PaginationComponent {\n\n  @Input() itemsPerPage = 10;\n  @Input() currentPage = 0;\n  @Output() currentPageChange = new EventEmitter<number>();\n\n\n  @Input() list: Array<any> = [];\n\n  handleChangeCurrentPage = () => this.currentPageChange.emit(this.currentPage);\n\n  previous() {\n    if (this.currentPage > 0) {\n      this.currentPage--;\n      this.handleChangeCurrentPage();\n    }\n  }\n  next() {\n    if (this.currentPage <= this.nPages)\n      this.currentPage++;\n    this.handleChangeCurrentPage();\n\n  }\n\n  setSelectionPage(event: any) {\n    this.currentPage = parseInt(event.target.value);\n    this.handleChangeCurrentPage();\n  }\n\n  get nRows() {\n    return this.list.length;\n  }\n\n  get nPages() {\n    return Math.floor(this.nRows / this.itemsPerPage);\n  }\n\n  get optionPages() {\n    return Array(this.nPages).fill(1).map((x, i) => i);\n  }\n\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n\n@Component({\n\tselector: 'cs-pagination',\n\ttemplateUrl: './pagination.component.html',\n\tstyleUrls: ['./pagination.component.sass']\n})\nexport class PaginationComponent {\n\n  @Input() itemsPerPage = 10;\n  @Input() currentPage = 0;\n  @Output() currentPageChange = new EventEmitter<number>();\n\n\n  @Input() list: Array<any> = [];\n\n  handleChangeCurrentPage = () => this.currentPageChange.emit(this.currentPage);\n\n  previous() {\n\t\t\t\tif (this.currentPage > 0) {\n      this.currentPage--;\n      this.handleChangeCurrentPage();\n    }\n  }\n  next() {\n    if (this.currentPage <= this.nPages)\n      this.currentPage++;\n    this.handleChangeCurrentPage();\n  }\n\n  setSelectionPage(event: any) {\n    this.currentPage = parseInt(event.target.value);\n    this.handleChangeCurrentPage();\n  }\n\n  get nRows() {\n    return this.list.length;\n  }\n\n  get nPages() {\n    return Math.floor(this.nRows / this.itemsPerPage);\n  }\n\n  get optionPages() {\n    return Array(this.nPages).fill(1).map((x, i) => i);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -755,7 +952,7 @@
                         "name": "nRows",
                         "type": "",
                         "returnType": "",
-                        "line": 38
+                        "line": 37
                     }
                 },
                 "nPages": {
@@ -764,7 +961,7 @@
                         "name": "nPages",
                         "type": "",
                         "returnType": "",
-                        "line": 42
+                        "line": 41
                     }
                 },
                 "optionPages": {
@@ -773,7 +970,7 @@
                         "name": "optionPages",
                         "type": "",
                         "returnType": "",
-                        "line": 46
+                        "line": 45
                     }
                 }
             },
@@ -858,7 +1055,7 @@
         },
         {
             "name": "SwitchComponent",
-            "id": "component-SwitchComponent-af9c117c15ba00cdd16bbf314eb47893",
+            "id": "component-SwitchComponent-c3211bf9be1a37c8740ae58d43e7b06a",
             "file": "projects/clio-system/src/lib/switch/switch.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -914,7 +1111,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n\n@Component({\n  selector: 'cs-switch',\n  templateUrl: './switch.component.html',\n  styleUrls: ['./switch.component.sass']\n})\nexport class SwitchComponent {\n\n  @Input() model = false;\n  @Output() modelChange = new EventEmitter<boolean>();\n\n  handleChangeModel = () => this.modelChange.emit(!this.model);\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n\n@Component({\n\tselector: 'cs-switch',\n\ttemplateUrl: './switch.component.html',\n\tstyleUrls: ['./switch.component.sass']\n})\nexport class SwitchComponent {\n\n  @Input() model = false;\n  @Output() modelChange = new EventEmitter<boolean>();\n\n  handleChangeModel = () => this.modelChange.emit(!this.model);\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1128,6 +1325,57 @@
     ],
     "modules": [
         {
+            "name": "ButtonModule",
+            "id": "module-ButtonModule-d9db1ef030cd32ec4070f85be2f9d648",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/button/button.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { CircularProgressModule } from '../circular-progress/circular-progress.module';\nimport { IconModule } from '../icon/icon.module';\nimport { ButtonComponent } from './button.component';\n\n@NgModule({\n\tdeclarations: [\n\t\tButtonComponent,\n\t],\n\timports: [\n\t\tCommonModule,\n\t\tIconModule,\n\t\tCircularProgressModule\n\t],\n\texports: [\n\t\tButtonComponent\n\t]\n})\nexport class ButtonModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "CircularProgressModule"
+                        },
+                        {
+                            "name": "IconModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "CardModule",
             "id": "module-CardModule-c9c7170023b919fde58617e7f2b64c4a",
             "description": "",
@@ -1158,6 +1406,50 @@
                     "elements": [
                         {
                             "name": "CardComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "CircularProgressModule",
+            "id": "module-CircularProgressModule-4b7fb16b1c59535700d72faa9b5a21a8",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/clio-system/src/lib/circular-progress/circular-progress.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { CircularProgressComponent } from './circular-progress.component';\n\n\n@NgModule({\n\tdeclarations: [\n\t\tCircularProgressComponent\n\t],\n\timports: [\n\t\tCommonModule\n\t],\n\texports:[\n\t\tCircularProgressComponent\n\t]\n})\nexport class CircularProgressModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "CircularProgressComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "CircularProgressComponent"
                         }
                     ]
                 },
@@ -1217,13 +1509,13 @@
         },
         {
             "name": "IconModule",
-            "id": "module-IconModule-5d2c3f5521350a6eeb80d38e3072fcae",
+            "id": "module-IconModule-1d2cba927b0934fb4eef73552a680008",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/clio-system/src/lib/icon/icon.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { IconComponent } from './icon.component';\n\n\n@NgModule({\n  declarations: [\n    IconComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [IconComponent]\n})\nexport class IconModule { }",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { IconComponent } from './icon.component';\n\n\n@NgModule({\n  declarations: [\n    IconComponent\n  ],\n  imports: [\n    CommonModule\n  ],\n  exports: [IconComponent]\n})\nexport class IconModule { };",
             "children": [
                 {
                     "type": "providers",
@@ -1349,13 +1641,13 @@
         },
         {
             "name": "TablesModule",
-            "id": "module-TablesModule-c8fb50dc10bd4aa2e6fbda3ff940fdb2",
+            "id": "module-TablesModule-0cb9b9fc4b6b6c69e36d30641a0bfdd8",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/clio-system/src/lib/tables/tables.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TablesComponent } from './tables.component';\nimport { FilterPipe } from './pipes/filter.pipe';\nimport { SortPipe } from './pipes/sort.pipe';\nimport { PaginationPipe } from './pipes/paginations.pipe';\nimport { PaginationModule } from '../pagination/pagination.module';\n\n@NgModule({\n  declarations: [\n    TablesComponent,\n    FilterPipe,\n    SortPipe,\n    PaginationPipe,\n  ],\n  imports: [\n    CommonModule,\n    PaginationModule\n  ],\n  exports: [\n    TablesComponent,\n    FilterPipe,\n    SortPipe,\n    PaginationPipe\n  ]\n})\nexport class TablesModule { }\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { PaginationModule } from '../pagination/pagination.module';\nimport { FilterPipe } from './pipes/filter.pipe';\nimport { PaginationPipe } from './pipes/paginations.pipe';\nimport { SortPipe } from './pipes/sort.pipe';\nimport { TablesComponent } from './tables.component';\n\n@NgModule({\n  declarations: [TablesComponent, FilterPipe, SortPipe, PaginationPipe],\n  imports: [CommonModule, PaginationModule],\n  exports: [TablesComponent, FilterPipe, SortPipe, PaginationPipe],\n})\nexport class TablesModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1427,6 +1719,16 @@
                 "defaultValue": "`import { InputModule } from 'clio-system';`"
             },
             {
+                "name": "Contained",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1435,6 +1737,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "headers",
@@ -1457,10 +1769,10 @@
                 "defaultValue": "`\nLorem Ipsum is simply dummy text of the printing and typesetting industry. \nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, \nwhen an unknown printer took a galley of type and scrambled it to make a type specimen book. \nIt has survived not only five centuries, but also the leap into electronic typesetting,\nremaining essentially unchanged. It was popularised in the 1960s with the release of \nLetraset sheets containing Lorem Ipsum passages, and more recently with desktop \npublishing software like Aldus PageMaker including versions of Lorem Ipsum.\n`"
             },
             {
-                "name": "Primary",
+                "name": "Outlined",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                "file": "projects/clio-system/src/lib/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1480,16 +1792,6 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/input/input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/pagination/pagination.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1500,7 +1802,27 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/input/input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1529,16 +1851,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/card/card.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<CardComponent>",
-                "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardContent }}`,\n    props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/icon/icon.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1549,11 +1861,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                "file": "projects/clio-system/src/lib/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<StoryBookTemplateComponent>",
-                "defaultValue": "(args: StoryBookTemplateComponent) => ({\n    props: args,\n    template: `\n    <cs-story-book-template api=\"${api}\">\n        <div style=\"width:500px\">\n        Simple\n            <cs-input placeholder=\"busque\"></cs-input>\n        </div>\n        <div style=\"width:500px; margin-top:20px\">\n            Password\n            <cs-input placeholder=\"busque\" type=\"password\"></cs-input>\n        </div>\n        <div style=\"width:200px; margin-top:20px\">\n            search\n            <cs-input placeholder=\"busque\" type=\"search\"></cs-input>\n        </div>\n    </cs-story-book-template>\n    `\n})"
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "args => ({\n\tprops: args\n})"
             },
             {
                 "name": "Template",
@@ -1569,11 +1881,31 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/clio-system/src/lib/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<CardComponent>",
+                "defaultValue": "(args: CardComponent) => ({\n    template: `{{ cardContent }}`,\n    props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/clio-system/src/lib/switch/switch.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<SwitchComponent>",
-                "defaultValue": "(args: SwitchComponent) => ({\n    props: args,\n})"
+                "defaultValue": "(args: SwitchComponent) => ({\n\tprops: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/input/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<StoryBookTemplateComponent>",
+                "defaultValue": "(args: StoryBookTemplateComponent) => ({\n    props: args,\n    template: `\n    <cs-story-book-template api=\"${api}\">\n        <div style=\"width:500px\">\n        Simple\n            <cs-input placeholder=\"busque\"></cs-input>\n        </div>\n        <div style=\"width:500px; margin-top:20px\">\n            Password\n            <cs-input placeholder=\"busque\" type=\"password\"></cs-input>\n        </div>\n        <div style=\"width:200px; margin-top:20px\">\n            search\n            <cs-input placeholder=\"busque\" type=\"search\"></cs-input>\n        </div>\n    </cs-story-book-template>\n    `\n})"
             },
             {
                 "name": "Template",
@@ -1584,10 +1916,66 @@
                 "deprecationMessage": "",
                 "type": "Story<TablesComponent>",
                 "defaultValue": "(args: TablesComponent) => ({\n    props: args,\n})"
+            },
+            {
+                "name": "Text",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/clio-system/src/lib/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             }
         ],
-        "functions": [],
-        "typealiases": [],
+        "functions": [
+            {
+                "name": "BooleanInput",
+                "file": "projects/clio-system/src/utils/boolean-Input.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [],
+                "returnType": "any"
+            }
+        ],
+        "typealiases": [
+            {
+                "name": "ButtonTypeProps",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"submit\" | \"button\"",
+                "file": "projects/clio-system/src/lib/button/types_d.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 185
+            },
+            {
+                "name": "SizeProps",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"small\" | \"medium\" | \"large\"",
+                "file": "projects/clio-system/src/lib/button/types_d.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 185
+            },
+            {
+                "name": "VariantProps",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"outlined\" | \"text\" | \"contained\"",
+                "file": "projects/clio-system/src/lib/button/types_d.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 185
+            }
+        ],
         "enumerations": [],
         "groupedVariables": {
             "projects/clio-system/src/lib/input/input.stories.ts": [
@@ -1620,6 +2008,58 @@
                     "deprecationMessage": "",
                     "type": "Story<StoryBookTemplateComponent>",
                     "defaultValue": "(args: StoryBookTemplateComponent) => ({\n    props: args,\n    template: `\n    <cs-story-book-template api=\"${api}\">\n        <div style=\"width:500px\">\n        Simple\n            <cs-input placeholder=\"busque\"></cs-input>\n        </div>\n        <div style=\"width:500px; margin-top:20px\">\n            Password\n            <cs-input placeholder=\"busque\" type=\"password\"></cs-input>\n        </div>\n        <div style=\"width:200px; margin-top:20px\">\n            search\n            <cs-input placeholder=\"busque\" type=\"search\"></cs-input>\n        </div>\n    </cs-story-book-template>\n    `\n})"
+                }
+            ],
+            "projects/clio-system/src/lib/button/button.stories.ts": [
+                {
+                    "name": "Contained",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Outlined",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "args => ({\n\tprops: args\n})"
+                },
+                {
+                    "name": "Text",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/clio-system/src/lib/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
                 }
             ],
             "projects/clio-system/src/test.ts": [
@@ -1770,13 +2210,63 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<SwitchComponent>",
-                    "defaultValue": "(args: SwitchComponent) => ({\n    props: args,\n})"
+                    "defaultValue": "(args: SwitchComponent) => ({\n\tprops: args,\n})"
                 }
             ]
         },
-        "groupedFunctions": {},
+        "groupedFunctions": {
+            "projects/clio-system/src/utils/boolean-Input.ts": [
+                {
+                    "name": "BooleanInput",
+                    "file": "projects/clio-system/src/utils/boolean-Input.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [],
+                    "returnType": "any"
+                }
+            ]
+        },
         "groupedEnumerations": {},
-        "groupedTypeAliases": {}
+        "groupedTypeAliases": {
+            "projects/clio-system/src/lib/button/types_d.ts": [
+                {
+                    "name": "ButtonTypeProps",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"submit\" | \"button\"",
+                    "file": "projects/clio-system/src/lib/button/types_d.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 185
+                },
+                {
+                    "name": "SizeProps",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"small\" | \"medium\" | \"large\"",
+                    "file": "projects/clio-system/src/lib/button/types_d.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 185
+                },
+                {
+                    "name": "VariantProps",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"outlined\" | \"text\" | \"contained\"",
+                    "file": "projects/clio-system/src/lib/button/types_d.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 185
+                }
+            ]
+        }
     },
     "routes": [],
     "coverage": {
@@ -1790,6 +2280,65 @@
                 "name": "StoryBookTemplateComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Contained",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Outlined",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Text",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -1829,6 +2378,15 @@
                 "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/lib/circular-progress/circular-progress.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CircularProgressComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {
@@ -2057,6 +2615,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/clio-system/src/utils/boolean-Input.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "BooleanInput",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

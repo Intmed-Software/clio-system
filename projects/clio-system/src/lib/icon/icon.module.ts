@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { IconComponent } from './icon.component';
 
 
@@ -12,4 +12,4 @@ import { IconComponent } from './icon.component';
   ],
   exports: [IconComponent]
 })
-export class IconModule { }
+export class IconModule { };

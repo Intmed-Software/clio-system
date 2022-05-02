@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 
 @Component({
-  selector: 'cs-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.sass']
+	selector: 'cs-pagination',
+	templateUrl: './pagination.component.html',
+	styleUrls: ['./pagination.component.sass']
 })
 export class PaginationComponent {
 
@@ -18,7 +18,7 @@ export class PaginationComponent {
   handleChangeCurrentPage = () => this.currentPageChange.emit(this.currentPage);
 
   previous() {
-    if (this.currentPage > 0) {
+				if (this.currentPage > 0) {
       this.currentPage--;
       this.handleChangeCurrentPage();
     }
@@ -27,7 +27,6 @@ export class PaginationComponent {
     if (this.currentPage <= this.nPages)
       this.currentPage++;
     this.handleChangeCurrentPage();
-
   }
 
   setSelectionPage(event: any) {

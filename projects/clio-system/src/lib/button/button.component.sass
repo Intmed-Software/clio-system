@@ -1,0 +1,79 @@
+@import ../../assets/styles/sass/colors
+@import ../../assets/styles/sass/sizes
+@import ../../assets/styles/sass/mixins
+
+button
+    padding: 0.469rem 1rem // 7.5px  16px 
+    border-radius: 4px
+    font-size: $xs // 12px
+    font-weight: 700
+    outline: none
+    cursor: pointer
+    color: $black
+    background-color: transparent
+    border: none
+    position: relative
+    @include fontStyle()
+
+    &:hover
+       background-color: $accentBlue
+       transition: 0.3s
+       color: $mainBlue
+
+    &:disabled
+        cursor: not-allowed
+
+    &:active
+        background-color: $darkBlue
+        color: $white
+
+.contained
+    background: $mainBlue
+    color: $white
+    border: 0.125rem solid $mainBlue // 2px
+
+    &:disabled
+        background: $lightGray
+        color: $white
+        border: 0.125rem solid $lightGray // 2px
+
+.text
+    background-color: transparent
+    color: $mainBlue
+    border: 0.125rem solid transparent // 2px
+
+    &:hover
+       background-color: transparent
+       color: $mainBlue
+
+    &:disabled
+        color: $lightGray
+
+.outlined
+    background-color: transparent
+    color: $mainBlue
+    border: 0.125rem solid $mainBlue // 2px
+
+    &:disabled
+        color: $lightGray
+        border: 0.125rem solid $lightGray // 2px
+
+.fullWidth
+    width: 100%
+
+.hideContainer
+    visibility: hidden
+    opacity: 0
+
+.size-small
+    font-size: $xs // 12px
+    
+.size-medium
+    font-size: $small // 14px
+
+.loading-container
+    position: absolute
+    left: calc(50% - 7.5px)
+    top: calc(50% - 7.5px)
+    width: 100%
+    height: 100%
