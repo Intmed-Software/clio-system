@@ -1,0 +1,29 @@
+<div class="clio-pagination">
+    <div class="clio-map">
+        {{currentPage + 1}} - {{nPages}} de {{nRows}}
+    </div>
+    <div class="clio-actions">
+        <div class="clio-options-pages">
+            <span class="clio-page-text"> Página </span>
+            <select (change)="setSelectionPage($event)">
+                <option *ngFor="let opt of optionPages" [value]="opt" [selected]="opt">{{opt + 1}}</option>
+            </select>
+        </div>
+        <div class="clio-action-arrows">
+            <i 
+                id="previous"
+                class="material-icons" 
+                (click)="previous()"
+            >
+                chevron_left
+            </i>
+            <i 
+                id="next" 
+                class="material-icons" 
+                (click)="next()"
+            >
+                navigate_next
+            </i>
+        </div>
+    </div>
+</div>

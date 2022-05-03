@@ -1,0 +1,67 @@
+@import ../../../../assets/styles/sass/colors
+@import ../../../../assets/styles/sass/sizes
+@import ../../../../assets/styles/sass/mixins
+
+
+table
+  width: 100%
+  table-layout: fixed
+  border-collapse: collapse
+  
+  thead tr
+    height: 1.875rem // 30px
+
+    th
+      text-align: left
+      font-size: 0.75rem // 12px
+      padding: 12px
+      color: $darkBlue
+      background-color: $accentBlue
+      @include fontStyle()
+
+  tbody
+    tr
+      height: 2.5rem // 40px
+      border-bottom: 1px solid #CCCCCC
+      padding: 0.625rem
+
+    tr:last-child
+      border-bottom: none
+    td
+      font-size: $xs //12px
+      text-align: left
+      white-space: nowrap
+      text-overflow: ellipsis
+      overflow: hidden
+      color: $darkestGray
+      padding:0 12px
+      @include fontStyle()
+ 
+.table-content
+  background-color: $white
+  width: 100%
+  position: relative
+
+.table-round-corner
+  width: 100%
+  overflow: hidden
+  border-collapse: separate
+  -webkit-border-radius: 25px
+  -moz-border-radius: 25px
+  border-radius: 8px
+  border: 2px solid $accentBlue
+
+// Loadder
+.spinner-container
+  height: 30vh
+  display: flex
+  justify-content: center
+  align-items: center
+
+// Empty
+.table-empty-content
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 200px

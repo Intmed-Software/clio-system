@@ -1,0 +1,59 @@
+
+@import '~material-design-icons/iconfont/material-icons.css'
+@import ../../../../assets/styles/sass/colors
+@import ../../../../assets/styles/sass/sizes
+@import ../../../../assets/styles/sass/mixins
+
+
+@mixin alignCenter()
+    display: flex
+    align-items: center
+
+.clio-pagination
+    width: 100%
+    background-color: $white
+    color: $darkGray
+    font-size: $xs
+    padding: 16px
+    box-sizing: border-box
+    @include alignCenter()
+    justify-content: space-between
+    @include fontStyle()
+
+
+.clio-map
+    font-weight: bold
+    @include alignCenter()
+
+select
+    cursor: pointer
+    position: relative
+    font-size: $xs
+    color: $black
+    border-radius: 4px
+    background-color: $white 
+    border: 1px solid $mediumGray
+
+
+.clio-actions
+    display: flex
+
+    .clio-page-text
+        margin-right: 8px
+        font-weight: 700
+        @include alignCenter()
+
+    .clio-action-arrows
+        @include alignCenter()
+
+.clio-options-pages
+    @include alignCenter()
+
+i
+    color: $lightGray
+    font-size: $xs
+    cursor: pointer
+
+    &:hover
+        color: $mediumBlue
+        transition: 0.7

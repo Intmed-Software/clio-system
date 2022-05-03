@@ -1,0 +1,73 @@
+<div class="table-content table-round-corner">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers" [id]="header.ref ? header.ref : ''">
+          {{ header.name }}
+        </th>
+      </tr>
+    </thead>
+    <ng-template
+      [ngTemplateOutlet]="!loading && !isEmpt ? tableContent : null"
+    ></ng-template>
+  </table>
+
+  <ng-template
+    [ngTemplateOutlet]="loading ? tableLoading : isEmpt ? tableEmpty : null"
+  ></ng-template>
+  <clio-pagination
+    [list]="rows"
+    [itemsPerPage]="itemsPerPage"
+    [(currentPage)]="currentPage"
+    *ngIf="showPagination"
+  >
+  </clio-pagination>
+</div>
+
+<ng-template #tableHeader>
+  <thead>
+    <tr>
+      <th *ngFor="let header of headers">
+        {{ header.name }}
+      </th>
+    </tr>
+  </thead>
+</ng-template>
+
+<ng-template #tableContent>
+  <tbody class="table-body">
+    <ng-template
+      ngFor
+      let-row
+      [ngForOf]="rows | pagination: itemsPerPage:currentPage"
+      let-i="index"
+      let-odd="odd"
+    >
+      <tr>
+        <ng-template
+          [ngTemplateOutlet]="rowsTemplate ? rowsTemplate : defaultTableRow"
+          [ngTemplateOutletContext]="{row, headers}"
+        >
+        </ng-template>
+      </tr>
+    </ng-template>
+  </tbody>
+</ng-template>
+
+<ng-template #defaultTableRow let-row="row" let-headers="headers">
+  <td *ngFor="let header of headers">
+    {{ header?.key ? treatsValue(row[header.key]) : "-" }}
+  </td>
+</ng-template>
+
+<ng-template #tableLoading>
+  <div class="spinner-container" *ngIf="loading">
+    <clio-circular-progress [size]="80"></clio-circular-progress>
+  </div>
+</ng-template>
+
+<ng-template #tableEmpty>
+  <div class="table-empty-content">
+    {{ messageOnEmptylist }}
+  </div>
+</ng-template>
